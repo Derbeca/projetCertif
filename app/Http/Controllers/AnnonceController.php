@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
-    public function rechercher (Request $request)
+    /* public function rechercher (Request $request)
     {
         $tabAssoJson = [];
         // DEBUG
@@ -114,7 +114,7 @@ class AnnonceController extends Controller
         // COOL AVEC LARAVEL 
         // => LARAVEL TRANSFORME LE TABLEAU ASSOCIATIF PHP EN TEXTE JSON
         // (fonction PHP json_encode)
-    }
+    } */
     public function deconnexion ()
     {
         // https://laravel.com/docs/5.8/authentication#included-authenticating
@@ -258,9 +258,9 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
                 'id'            => 'required|numeric|min:1',
-                'titre'         => 'nullable|max:160',
-                'auteur'        => 'nullable|max:160',
-                'description'   => 'nullable',
+                'titre'         => 'required|max:160',
+                'auteur'        => 'required|max:160',
+                'description'   => 'required',
                 'photo'         => 'image',         // OPTIONNEL
                 'adresse'       => 'required|max:160',
             ]);
@@ -377,9 +377,9 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
                 'id'            => 'required|numeric|min:1',
-                'titre'         => 'nullable|max:160',
-                'auteur'        => 'nullable|max:160',
-                'description'   => 'nullable',
+                'titre'         => 'required|max:160',
+                'auteur'        => 'required|max:160',
+                'description'   => 'required',
                 'photo'         => 'image',         // OPTIONNEL
                 'adresse'       => 'required|max:160',
             ]);
@@ -418,8 +418,7 @@ class AnnonceController extends Controller
                 // ON VA AJOUTER L'INFO DU user_id
                 $tabInput["user_id"] = $utilisateurConnecte->id;
                 // COMPLETER AVEC dateEvenement
-                $tabInput["dateEvenement"] = date("Y-m-d");
-                $tabInput["codePostal"] = "13013";
+
                 Annonce::create($tabInput);
                 // RENVOYER UNE CONFIRMATION
                 $tabAssoJson["confirmation"] = "VOTRE PHOTO EST PUBLIEE"; 

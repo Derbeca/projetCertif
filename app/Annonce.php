@@ -8,7 +8,7 @@ use App\User;
 class Annonce extends Model
 {
     protected $fillable = [
-        "titre", "auteur", "description", "photo", "user_id",
+        "titre", "auteur", "description", "photo", "adresse", "user_id",
     ];
     // ON DECLARE LA RELATION ONE-TO-MANY
     // https://laravel.com/docs/4.2/eloquent#eager-loading

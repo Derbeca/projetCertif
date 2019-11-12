@@ -24,8 +24,9 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- SI FORM SANS AJAX ALORS NE PAS OUBLIER method="POST" et enctype="multipart/form-data" --> 
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/store" enctype="multipart/form-data">
-        <input type="text" name="titre" placeholder="entrez le titre">
-        <textarea name="description" placeholder="entrez la description" rows="8"></textarea>
+        <input type="text" name="titre" required placeholder="entrez le titre">
+        <input type="text" name="auteur" required placeholder="entrez le auteur(e)">
+        <textarea name="description" required placeholder="entrez la description" rows="8"></textarea>
         <input type="file" name="photo" required placeholder="choisissez la photo">
         <input type="text" name="adresse" required placeholder="entrez l'adresse">
         <button type="submit">PUBLIER UNE ANNONCE</button>
@@ -43,6 +44,7 @@
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/modifier" enctype="multipart/form-data">
         <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez le titre">
+        <input type="text" v-model="annonceUpdate.auteur" name="auteur" placeholder="entrez le auteur(e)">
         <textarea name="description" v-model="annonceUpdate.description" required placeholder="entrez la description" rows="8"></textarea>
         <input type="file" name="photo" placeholder="choisissez la photo">
         <img :src="annonceUpdate.photo">
@@ -60,11 +62,11 @@
 
 
             <section>
-                <h3>LISTE DE MES ANNONCES</h3>
+                <h3>LISTE DE MES PHOTOS</h3>
                 <div class="listeAnnonce">
                     <article v-for="annonce in annonces">
                         <h4>@{{ annonce.titre }}</h4>
-                        <p>@{{ annonce.contenu }}</p>
+                        <p>@{{ annonce.description }}</p>
                         <img :src="annonce.photo">
                         <button @click.prevent="modifierAnnonce(annonce)">modifier</button>
                         <!-- COOL: AVEC VUEJS JE PEUX PASSER annonce COMME SI C'ETAIT UNE VARIABLE JS-->
