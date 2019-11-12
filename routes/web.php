@@ -76,3 +76,7 @@ Route::view('/annonces', 'annonces');
 Route::view('/recherche', 'recherche');
 // RECHERCHE AJAX
 Route::any('/annonce/rechercher', 'AnnonceController@rechercher');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

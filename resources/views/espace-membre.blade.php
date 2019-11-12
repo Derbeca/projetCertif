@@ -24,12 +24,10 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- SI FORM SANS AJAX ALORS NE PAS OUBLIER method="POST" et enctype="multipart/form-data" --> 
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/store" enctype="multipart/form-data">
-        <input type="text" name="titre" required placeholder="entrez votre titre">
-        <textarea name="contenu" required placeholder="entrez votre contenu" rows="8"></textarea>
-        <input type="file" name="photo" required placeholder="choisissez votre photo">
-        <input type="text" name="adresse" required placeholder="entrez votre adresse">
-        <input type="text" name="categorie" required placeholder="entrez votre categorie">
-        <input type="number" name="prix" required placeholder="entrez votre prix">
+        <input type="text" name="titre" placeholder="entrez le titre">
+        <textarea name="description" placeholder="entrez la description" rows="8"></textarea>
+        <input type="file" name="photo" required placeholder="choisissez la photo">
+        <input type="text" name="adresse" required placeholder="entrez l'adresse">
         <button type="submit">PUBLIER UNE ANNONCE</button>
         <div class="confirmation">
         @{{ confirmation }}
@@ -44,13 +42,11 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/modifier" enctype="multipart/form-data">
-        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez votre titre">
-        <textarea name="contenu" v-model="annonceUpdate.contenu" required placeholder="entrez votre contenu" rows="8"></textarea>
-        <input type="file" name="photo" placeholder="choisissez votre photo">
+        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez le titre">
+        <textarea name="description" v-model="annonceUpdate.description" required placeholder="entrez la description" rows="8"></textarea>
+        <input type="file" name="photo" placeholder="choisissez la photo">
         <img :src="annonceUpdate.photo">
         <input type="text" v-model="annonceUpdate.adresse" name="adresse" required placeholder="entrez votre adresse">
-        <input type="text" v-model="annonceUpdate.categorie" name="categorie" required placeholder="entrez votre categorie">
-        <input type="number"  v-model="annonceUpdate.prix" name="prix" required placeholder="entrez votre prix">
         <button type="submit">MODIFIER CETTE ANNONCE (id=@{{ annonceUpdate.id }})</button>
         <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
         <input type="hidden" name="id"  v-model="annonceUpdate.id">
