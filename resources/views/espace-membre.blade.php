@@ -5,6 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+html, body {
+    width:100%;
+    height:100%;
+    font-size:16px;
+    margin:0;
+    padding:0;
+}    
+* {
+    /* https://developer.mozilla.org/fr/docs/Web/CSS/box-sizing */
+    box-sizing:border-box;
+}    
+section {
+    padding:0.5rem;
+}
+form {
+    padding:0.2rem;
+}
+form input, form textarea, form button {
+    display:block;
+    padding:0.2rem;
+    margin:0.25rem;
+    min-width:280px;
+    width:100%;
+    max-width:640px;
+    font-family:monospace;
+}
+@media screen and (min-width: 425px) {
+    .listeAnnonce {
+        display:flex;
+        width:100%;
+        flex-wrap:wrap;
+    }
+    .listeAnnonce article {
+        margin:0.25rem;
+        padding:0.5rem;
+        width:calc(100% /2 - 0.5rem);
+        border:1px #aaaaaa solid;
+    }
+}
+@media screen and (min-width: 768px) {
+    .listeAnnonce article {
+        width:calc(100% /3 - 0.5rem);
+    }
+}
+.listeAnnonce article img {
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+.lightbox {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(100,100,100,0.8);
+    overflow:auto;
+}
+.lightbox img {
+    width:150px;
+    height:150px;
+    object-fit:cover;
+}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -24,11 +89,10 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- SI FORM SANS AJAX ALORS NE PAS OUBLIER method="POST" et enctype="multipart/form-data" --> 
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/store" enctype="multipart/form-data">
-        <input type="text" name="titre" required placeholder="entrez le titre">
-        <input type="text" name="auteur" required placeholder="entrez le auteur(e)">
-        <textarea name="description" required placeholder="entrez la description" rows="8"></textarea>
-        <input type="file" name="photo" required placeholder="choisissez la photo">
-        <input type="text" name="adresse" required placeholder="entrez l'adresse">
+        <input type="text" name="titre" required placeholder="entrez votre titre">
+        <input type="file" name="photo" required placeholder="choisissez votre photo">
+        <input type="text" name="adresse" required placeholder="entrez votre adresse">
+
         <button type="submit">PUBLIER UNE ANNONCE</button>
         <div class="confirmation">
         @{{ confirmation }}
@@ -43,10 +107,8 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/modifier" enctype="multipart/form-data">
-        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez le titre">
-        <input type="text" v-model="annonceUpdate.auteur" name="auteur" placeholder="entrez le auteur(e)">
-        <textarea name="description" v-model="annonceUpdate.description" required placeholder="entrez la description" rows="8"></textarea>
-        <input type="file" name="photo" placeholder="choisissez la photo">
+        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez votre titre">
+        <input type="file" name="photo" placeholder="choisissez votre photo">
         <img :src="annonceUpdate.photo">
         <input type="text" v-model="annonceUpdate.adresse" name="adresse" required placeholder="entrez votre adresse">
         <button type="submit">MODIFIER CETTE ANNONCE (id=@{{ annonceUpdate.id }})</button>
@@ -62,11 +124,10 @@
 
 
             <section>
-                <h3>LISTE DE MES PHOTOS</h3>
+                <h3>LISTE DE MES ANNONCES</h3>
                 <div class="listeAnnonce">
                     <article v-for="annonce in annonces">
                         <h4>@{{ annonce.titre }}</h4>
-                        <p>@{{ annonce.description }}</p>
                         <img :src="annonce.photo">
                         <button @click.prevent="modifierAnnonce(annonce)">modifier</button>
                         <!-- COOL: AVEC VUEJS JE PEUX PASSER annonce COMME SI C'ETAIT UNE VARIABLE JS-->

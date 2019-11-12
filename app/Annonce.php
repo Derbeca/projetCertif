@@ -1,14 +1,12 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-
 class Annonce extends Model
 {
+    // PROPRIETES D'OBJET
     protected $fillable = [
-        "titre", "auteur", "description", "photo", "adresse", "user_id",
+        "titre", "photo", "adresse", "user_id",
     ];
     // ON DECLARE LA RELATION ONE-TO-MANY
     // https://laravel.com/docs/4.2/eloquent#eager-loading

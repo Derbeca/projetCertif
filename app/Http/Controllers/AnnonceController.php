@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Annonce;
 use Illuminate\Http\Request;
 // NE PAS OUBLIER DE RAJOUTER CETTE LIGNE 
@@ -9,10 +7,9 @@ use Illuminate\Http\Request;
 use Validator;
 // NE PAS OUBLIER DE RAJOUTER CETTE LIGNE POUR UTILISATION Auth
 use Illuminate\Support\Facades\Auth;
-
 class AnnonceController extends Controller
 {
-    /* public function rechercher (Request $request)
+    public function rechercher (Request $request)
     {
         $tabAssoJson = [];
         // DEBUG
@@ -114,7 +111,7 @@ class AnnonceController extends Controller
         // COOL AVEC LARAVEL 
         // => LARAVEL TRANSFORME LE TABLEAU ASSOCIATIF PHP EN TEXTE JSON
         // (fonction PHP json_encode)
-    } */
+    }
     public function deconnexion ()
     {
         // https://laravel.com/docs/5.8/authentication#included-authenticating
@@ -149,9 +146,9 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        //
+        // READ LISTE
+        // JE VEUX OBTENIR LA LISTE DES ANNONCES
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -159,9 +156,9 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-        //
+        // LA METHODE QUI DEVRAIT CREER LE FORMULAIRE DE CREATE
+        // NOUS N'AVONS PAS UTILISE CE MOYEN...
     }
-
     public function supprimer (Request $request)
     {
         // ICI ON DOIT TRAITER LE FORMULAIRE DE CREATE
@@ -203,13 +200,13 @@ class AnnonceController extends Controller
                         // https://laravel.com/docs/6.x/eloquent#deleting-models
                         $annonce->delete();
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "LA PHOTO A ETE SUPPRIMEE"; 
+                        $tabAssoJson["confirmation"] = "L'ANNONCE A ETE SUPPRIMEE"; 
                     }
                     else
                     {
                         // KO UN MEMBRE ESSAIE D'EFFACER UNE ANNONCE QUI NE LUI APPARTIENT PAS
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "CETTE PHOTO NE VOUS APPARTIENT PAS"; 
+                        $tabAssoJson["confirmation"] = "CETTE ANNONCE NE VOUS APPARTIENT PAS"; 
                     }
                 }
                 // ASTUCE: MEME SI id EST MAUVAIS
@@ -257,12 +254,11 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#manually-creating-validators
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
-                'id'            => 'required|numeric|min:1',
-                'titre'         => 'required|max:160',
-                'auteur'        => 'required|max:160',
-                'description'   => 'required',
-                'photo'         => 'image',         // OPTIONNEL
-                'adresse'       => 'required|max:160',
+                'id'        => 'required|numeric|min:1',
+                'titre'     => 'required|max:160',
+                'photo'     => 'image',         // OPTIONNEL
+                'adresse'   => 'required|max:160',
+
             ]);
             if ($validator->fails()) 
             {
@@ -280,7 +276,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "auteur", "description", "adresse"
+                    "titre", "adresse"
                 ]);
                 // JE DOIS TRAITER L'UPLOAD A PART
                 // https://laravel.com/docs/5.8/filesystem#file-uploads
@@ -337,8 +333,8 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
@@ -376,12 +372,10 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#manually-creating-validators
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
-                'id'            => 'required|numeric|min:1',
-                'titre'         => 'required|max:160',
-                'auteur'        => 'required|max:160',
-                'description'   => 'required',
-                'photo'         => 'image',         // OPTIONNEL
-                'adresse'       => 'required|max:160',
+                'titre'     => 'required|max:160',
+                'photo'     => 'required|image', // SECURITE: PAS DE FICHIER PHP
+                'adresse'   => 'required|max:160',
+
             ]);
             if ($validator->fails()) 
             {
@@ -399,7 +393,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "auteur", "description", "adresse"
+                    "titre", "adresse"
                 ]);
                 
                 // JE DOIS TRAITER L'UPLOAD A PART
@@ -418,10 +412,11 @@ class AnnonceController extends Controller
                 // ON VA AJOUTER L'INFO DU user_id
                 $tabInput["user_id"] = $utilisateurConnecte->id;
                 // COMPLETER AVEC dateEvenement
-
+                $tabInput["dateEvenement"] = date("Y-m-d");
+                $tabInput["codePostal"] = "13013";
                 Annonce::create($tabInput);
                 // RENVOYER UNE CONFIRMATION
-                $tabAssoJson["confirmation"] = "VOTRE PHOTO EST PUBLIEE"; 
+                $tabAssoJson["confirmation"] = "VOTRE ANNONCE EST PUBLIEE"; 
             }
             // JE VAIS RENVOYER LA LISTE DES ANNONCES DE CET UTILISATEUR
             // IL FAUT FAIRE UNE REQUETE READ AVEC UN FILTRE
@@ -438,14 +433,13 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
         // LE TABLEAU ASSOCIATIF EN JSON
     }
-
     /**
      * Display the specified resource.
      *
@@ -454,9 +448,8 @@ class AnnonceController extends Controller
      */
     public function show(Annonce $annonce)
     {
-        //
+        // READ POUR AFFICHER UNE ANNONCE
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -465,9 +458,9 @@ class AnnonceController extends Controller
      */
     public function edit(Annonce $annonce)
     {
-        //
+        // DEVRAIT AFFICHER LE FORMULAIRE HTML POUR UPDATE
+        // ON VA PLUTOT CODER EN HTML DIRECTEMENT
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -477,9 +470,8 @@ class AnnonceController extends Controller
      */
     public function update(Request $request, Annonce $annonce)
     {
-        //
+        // ICI ON VA TRAITER LE FORMULAIRE DE UPDATE
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -488,6 +480,6 @@ class AnnonceController extends Controller
      */
     public function destroy(Annonce $annonce)
     {
-        //
+        // ICI ON DEVRAIT TRAITER LE FORMULAIRE DE DELETE
     }
 }
