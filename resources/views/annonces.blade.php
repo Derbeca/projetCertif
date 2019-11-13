@@ -78,9 +78,7 @@ foreach($tabAnnonce as $annonce)
 <<<CODEHTML
 <article>
     <img src="{$annonce->photo}">
-    <h5>{$annonce->categorie} | {$annonce->prix} euros</h5>
     <h4>{$annonce->titre}</h4>
-    <p>{$annonce->contenu}</p>
     <h5>{$annonce->id}</h5>
     <h5>user_id: {$annonce->user_id}</h5>
     <h5>name: {$name}</h5>
