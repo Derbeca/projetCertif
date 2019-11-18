@@ -1,19 +1,70 @@
-// Toggle grid padding
-function myFunction() {
-    var x = document.getElementById("myGrid");
-    if (x.className === "w3-row") {
-      x.className = "w3-row-padding";
-    } else { 
-      x.className = x.className.replace("w3-row-padding", "w3-row");
+paramVue                = {};      // je crée un objet vide et ensuite je le remplis
+paramVue.el             = '#app';
+paramVue.data           = {
+  annonces: [],       // MA VARIABLE VUEJS QUI GARDE EN MEMOIRE LA LISTE DES ANNONCES
+  message: 'Hello Vue !'};
+paramVue.methods = {
+    rechercherAjax: function (event) {
+        // debug
+        // event.target CONTIENT LA BALISE form
+        console.log(event.target);
+        // ON VA RECUPERER LES INFOS DU FORMULAIRE
+        var formData = new FormData(event.target);
+        // ET ENSUITE ON VA LANCER UNE REQUETE AJAX AVEC fetch
+        // POUR RECUPERER LA LISTE DES RESULTATS DE RECHERCHE
+        // JE DOIS CREER UNE ROUTE AVEC CETTE URL /annonce/rechercher
+        // POUR TRAITER LA REQUETE AJAX
+        fetch('annonce/rechercher', {
+            method: 'POST',
+            body: formData  // TRANSMET LES INFOS DU FORMULAIRE DANS LA REQUETE AJAX
+        })
+        .then(function(response) {
+            // CONVERTIT LA REPONSE DU SERVEUR EN OBJET JSON 
+            return response.json(); 
+        })
+        .then(function(objetJSON) {
+            // ON PEUT MANIPULER UN OBJET JS
+            console.log(objetJSON);
+            // AVEC VUEJS JE CENTRALISE LES INFOS DANS DES VARIABLES VUEJS
+            if (objetJSON.annonces && app.annonces) {
+                // JE GARDE LA LISTE DES RESULTATS DANS UNE VARIABLE VUEJS
+                app.annonces = objetJSON.annonces;
+            }
+        });
     }
+  },
+  paramVue.mounted = () => {
+
+    // Open and close sidebar
+    var sidebar = document.querySelector("#mySidebar");
+    var boutonMenu = document.querySelector("#logoMenu");
+    boutonMenu.addEventListener('click', (event) => {
+      console.log('tu as clické');
+      sidebar.style.width = "100%";
+      sidebar.style.display = "block";
+    });
+    var boutonFermer = document.querySelector("#logoFermer");
+    boutonFermer.addEventListener('click', (event) => {
+      console.log('tu as clické');
+      sidebar.style.display = "none";
+    });
+    // function w3_close() {
+    //   document.getElementById("mySidebar").style.display = "none";
+    // }
+
+    // Menu login
+
+    var btnLogin = document.querySelector('#login');
+    var fermerLien = document.querySelector('.monLien');
+    var menu = document.querySelector('ul');
+    btnLogin.addEventListener('click', (event) => {
+      menu.classList.add('montrer');
+    });
+
+    fermerLien.addEventListener('click', (event) => {
+      menu.style.display = 'none';
+    })
   }
-  
-  // Open and close sidebar
-  function w3_open() {
-    document.getElementById("mySidebar").style.width = "100%";
-    document.getElementById("mySidebar").style.display = "block";
-  }
-  
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-  }
+  var app = new Vue(paramVue);
+
+

@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body,h1 {
     font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+#container {
     background-image: url('../images/f19de8cd83600c23a60a6ee3fe425364_small.jpg');
     background-size: 120%;
     background-repeat: no-repeat;
-    margin: 0;
+    height: 100vh;
 }
 img {
     margin-bottom: -7px;
@@ -37,12 +40,12 @@ img {
 #logo img {
     display: block;
     margin: auto;
-    width: 250px;
+    width: 80%;
 }
 #btn-plus {
     display: block;
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     width: 100%;
 }
 #btn-plus img {
@@ -55,6 +58,126 @@ a {
     padding: 10px;
     font-size: 18px;
 }
-nav {
-    padding-top: 40px;
+header {
+    height: 20%;
+    background-color: black;
+}
+#justify {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+#justify a {
+    width: 40%;
+    height: auto;
+    padding: 0;
+}
+#login img {
+    margin: 5px;
+    display: block;
+    margin: 10px auto;
+}
+#logoMenu {
+    padding-left: 0;
+}
+.montrer {
+    display: block;
+}
+ul {
+    display: none;
+    position: absolute;
+    top: 20px;
+    width: 100px;
+    min-width: 120px;
+    background-color: black;
+    padding: 0;
+    list-style: none;
+    height: auto;
+}
+ul a {
+    font-size: 14px;
+    text-decoration: none;
+}
+
+ul li {
+    line-height: 0.8;
+    margin: 10px;
+}
+
+/* CSS LISTE ANNONCES */
+
+.listeAnnonce {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+article {
+    width: 90%;
+    margin: 10px auto;
+    background-color: black;
+}
+article img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+article h4 {
+    font-size: 16px;
+    margin-left: 10px;
+    font-weight: bolder;
+    color: white;
+}
+article p {
+    font-size: 14px;
+    margin-left: 10px;
+    color: white;
+}
+
+/* CSS FOOTER */
+
+footer {
+    background-color: #d1b467;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+#logoCarte {
+    float: right;
+    padding: 10px;
+}
+#logoRecherche {
+    float: left;
+}
+
+/* CSS RECHERCHE */
+
+form {
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+input {
+    width: 95%;
+    height: 40px;
+    background-color: #d1b467;
+    border: none;
+    margin: 10px;
+    padding-left: 5px;
+    color: white;
+}
+::placeholder {
+    padding-left: 5px;
+    color: white;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+button {
+    width: 120px;
+    height: 40px;
+    background-color: black;
+    border: none;
+    color: white;
+    display: block;
+    margin: auto;
 }

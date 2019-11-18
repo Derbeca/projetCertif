@@ -13,44 +13,49 @@
 
 </head>
 <body>
-<!-- MENU DEPLIANT CACHÉ-->
-    <nav class="w3-sidebar w3-animate-top w3-black"  style="display:none" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
-            <i class="fa fa-remove"></i>
-        </a>
-        <div class="w3-bar-block w3-center">
-            <a href="<?php echo url('/') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_home.png"><p>accueil</p></a>
-            <a href="<?php echo url('/annonces') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_galerie.png"><p>galerie</p></a>
-            <a href="<?php echo url('/recherche') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_recherche.png"><p>chercher</p></a>
-            <a href="<?php echo url('/galerie') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_carte.png"><p>carte</p></a>
-            <!-- <a href="<?php echo url('/register') ?>" class="w3-button w3-hover-black">inscription</a> -->
-<!--             <a href="<?php echo url('/espace-membre') ?>" class="w3-button w3-hover-black">espace membre</a> -->
-            <a href="<?php echo url('/galerie') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_murs.png"><p>chasse au murs</p></a>
-            <a href="<?php echo url('/contact') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_contact.png"><p>contact</p></a>
-        </div>
-    </nav>
-
-    <!-- HEADER -->
-    <header class="w3-opacity">
-        <span class="w3-button w3-xxlarge  w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span> 
-        <div class="w3-clear"></div>
-        <div id="entete">
-            <a href="<?php echo url('/') ?>" id="logo"><img src="../public/assets/images/logo_martseille.png"></a>
-        </div>
-    </header>
-    <main>
-    </main>
-    <footer>
-        <a href="<?php echo url('/espace-membre') ?>" id="btn-plus"><img src="../public/assets/images/bouton_plus.png"></a>
-<!--         <nav>
-            <ul>
-                <li><a href="<?php echo url('/espace-membre') ?>">membre</a></li>
-                <li><a href="<?php echo url('/espace-admin') ?>">admin</a></li>
-            </ul>
+    <div id="app">
+    <div id="container">
+        <!-- MENU DEPLIANT CACHÉ-->
+        <nav class="w3-sidebar w3-animate-top w3-black"  style="display:none" id="mySidebar">
+            <a href="javascript:void(0)" class="w3-button w3-xxlarge w3-padding" style="padding:6px 24px">
+                <i class="fa fa-remove" id="logoFermer"></i>
+            </a>
+            <div class="w3-bar-block w3-center">
+                <a href="<?php echo url('/') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_home.png"><p>accueil</p></a>
+                <a href="<?php echo url('/annonces') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_galerie.png"><p>galerie</p></a>
+                <a href="<?php echo url('/recherche') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_recherche.png"><p>chercher</p></a>
+                <a href="<?php echo url('/galerie') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_carte.png"><p>carte</p></a>
+                <!-- <a href="<?php echo url('/register') ?>" class="w3-button w3-hover-black">inscription</a> -->
+    <!--             <a href="<?php echo url('/espace-membre') ?>" class="w3-button w3-hover-black">espace membre</a> -->
+                <a href="<?php echo url('/galerie') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_murs.png"><p>chasse au murs</p></a>
+                <a href="<?php echo url('/contact') ?>" class="w3-button w3-hover-black"><img src="../public/assets/images/icon_contact.png"><p>contact</p></a>
+            </div>
         </nav>
-        <p>tous droits réservés 2019</p> -->
-    </footer>
 
-    <script src="<?php echo url('/assets/js/main.js') ?>"></script>
+        <!-- HEADER -->
+        <header class="w3-opacity">
+            <span class="w3-button w3-xxlarge  w3-right"><i class="fa fa-bars" id="logoMenu"></i></span> 
+            <div class="w3-clear"></div>
+            <div id="entete">
+                <a href="<?php echo url('/') ?>" id="logo"><img src="../public/assets/images/logo_martseille.png"></a>
+            </div>
+        </header>
+        <main>
+        </main>
+        <footer>
+            <a href="<?php echo url('/espace-membre') ?>" id="btn-plus"><img src="../public/assets/images/bouton_plus.png"></a>
+    <!--         <nav>
+                <ul>
+                    <li><a href="<?php echo url('/espace-membre') ?>">membre</a></li>
+                    <li><a href="<?php echo url('/espace-admin') ?>">admin</a></li>
+                </ul>
+            </nav>
+            <p>tous droits réservés 2019</p> -->
+        </footer>
+    </div><!-- FIN DU CONTAINER POUR VUEJS -->
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="<?php echo url('/assets/js/main.js') ?>"></script>
+
 </body>
 </html>
