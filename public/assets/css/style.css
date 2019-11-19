@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body,h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
     margin: 0;
 }
 #container {
@@ -9,38 +9,51 @@ body,h1 {
     background-repeat: no-repeat;
     height: 100vh;
 }
-img {
-    margin-bottom: -7px;
+#mySidebar {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    position: fixed;
 }
-.w3-row-padding img {
-    margin-bottom: 12px;
+#menuAccueil {
+    margin: auto;
+    padding-top: 70px;
+    width: 65%;
 }
-.w3-button {
-    background-color: transparent;
-    color: #d1b467;
+#menuAccueil a {
     display: flex;
-    justify-content: left;
-    padding-left: 60px;
+    padding: 5px;
 }
-.w3-button img {
-    margin: 10px;
+#menuAccueil a img {
+    width: 35px;
+    height: 35px;
+    margin: 5px;
 }
-.w3-button p {
+#menuAccueil a p {
     margin: 0;
-    padding-top: 15px;
+    padding-top: 10px;
 }
-.w3-opacity {
-    background-color:rgba(0, 0, 0, 0.8);
+#headerAccueil {
     height: 250px;
-    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 #entete {
-    margin-top: 20px;
+    padding-top: 20px;
 }
-#logo img {
+#logoAccueil {
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+#logoAccueil img {
     display: block;
     margin: auto;
-    width: 80%;
+    padding-top: 80px;
+}
+#logo {
+    width: 30%;
+}
+#logo img {
+    width: 100%;
 }
 #btn-plus {
     display: block;
@@ -57,6 +70,10 @@ a {
     color: #d1b467;
     padding: 10px;
     font-size: 18px;
+    text-decoration: none;
+}
+nav {
+    display: none;
 }
 header {
     height: 20%;
@@ -70,15 +87,16 @@ header {
 #justify a {
     width: 40%;
     height: auto;
-    padding: 0;
+    padding: 0 0 0 10px;
 }
 #login img {
     margin: 5px;
     display: block;
-    margin: 10px auto;
+    margin: 15px auto;
 }
 #logoMenu {
-    padding-left: 0;
+    float: right;
+    padding: 10px;
 }
 .montrer {
     display: block;
@@ -86,7 +104,7 @@ header {
 ul {
     display: none;
     position: absolute;
-    top: 20px;
+    top: 50px;
     width: 100px;
     min-width: 120px;
     background-color: black;
@@ -101,7 +119,7 @@ ul a {
 
 ul li {
     line-height: 0.8;
-    margin: 10px;
+    margin: 20px 0;
 }
 
 /* CSS LISTE ANNONCES */
@@ -118,7 +136,7 @@ article {
 }
 article img {
     width: 100%;
-    height: 70%;
+    height: 200px;
     object-fit: cover;
 }
 article h4 {
@@ -132,9 +150,19 @@ article p {
     margin-left: 10px;
     color: white;
 }
+.listeAnnonce button {
+    margin: 0;
+    background-color: #d1b467;
+}
 
 /* CSS FOOTER */
-
+#footerAccueil {
+    background-color: transparent;
+}
+#logoFermer {
+    float: right;
+    padding: 10px;
+}
 footer {
     background-color: #d1b467;
     height: 10vh;
@@ -159,7 +187,7 @@ form {
     flex-direction: column;
 }
 input {
-    width: 95%;
+    width: 90%;
     height: 40px;
     background-color: #d1b467;
     border: none;
@@ -180,4 +208,29 @@ button {
     color: white;
     display: block;
     margin: auto;
+}
+
+/* CSS ESPACE-MEMBRE */
+
+.formMembre input {
+    background-color: #eeeeee;
+    color: black;
+}
+.formMembre ::placeholder {
+    color: gray;
+}
+.formMembre .inputUpload {
+    background-color: transparent;
+}
+.formMembre button {
+    background-color: #d1b467;
+    color: black;
+    width: 160px;
+}
+h3 {
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #d1b467;
 }

@@ -2,7 +2,44 @@ paramVue                = {};      // je crée un objet vide et ensuite je le re
 paramVue.el             = '#app';
 paramVue.data           = {
   annonces: [],       // MA VARIABLE VUEJS QUI GARDE EN MEMOIRE LA LISTE DES ANNONCES
-  message: 'Hello Vue !'};
+  message: 'Hello Vue !',
+};
+paramVue.mounted = () => {
+    // Open and close sidebar
+    var sidebar = document.querySelector("#mySidebar");
+    var boutonMenu = document.querySelector("#logoMenu");
+    boutonMenu.addEventListener('click', (event) => {
+      console.log('tu as clické');
+      sidebar.style.width = "100%";
+      sidebar.style.display = "block";
+    });
+    var boutonFermer = document.querySelector("#logoFermer");
+    boutonFermer.addEventListener('click', (event) => {
+      console.log('tu as clické');
+      sidebar.style.display = "none";
+    });
+    // function w3_close() {
+    //   document.getElementById("mySidebar").style.display = "none";
+    // }
+
+    // Menu login
+    function montrerMenuLogin() {
+      var btnLogin = document.querySelector('#login');
+      var menu = document.querySelector('ul');
+      btnLogin.addEventListener('click', (event) => {
+          menu.classList.add('montrer');
+      });
+    };
+    montrerMenuLogin();
+
+    // function cacherMenuLogin() {
+    //   var menu = document.querySelector('ul');
+    //   menu.addEventListener('click', (event) => {
+    //     menu.classList.remove('montrer');
+    //   });
+    // };
+    // cacherMenuLogin();
+},
 paramVue.methods = {
     rechercherAjax: function (event) {
         // debug
@@ -31,39 +68,7 @@ paramVue.methods = {
                 app.annonces = objetJSON.annonces;
             }
         });
-    }
-  },
-  paramVue.mounted = () => {
-
-    // Open and close sidebar
-    var sidebar = document.querySelector("#mySidebar");
-    var boutonMenu = document.querySelector("#logoMenu");
-    boutonMenu.addEventListener('click', (event) => {
-      console.log('tu as clické');
-      sidebar.style.width = "100%";
-      sidebar.style.display = "block";
-    });
-    var boutonFermer = document.querySelector("#logoFermer");
-    boutonFermer.addEventListener('click', (event) => {
-      console.log('tu as clické');
-      sidebar.style.display = "none";
-    });
-    // function w3_close() {
-    //   document.getElementById("mySidebar").style.display = "none";
-    // }
-
-    // Menu login
-
-    var btnLogin = document.querySelector('#login');
-    var fermerLien = document.querySelector('.monLien');
-    var menu = document.querySelector('ul');
-    btnLogin.addEventListener('click', (event) => {
-      menu.classList.add('montrer');
-    });
-
-    fermerLien.addEventListener('click', (event) => {
-      menu.style.display = 'none';
-    })
+    },
   }
   var app = new Vue(paramVue);
 

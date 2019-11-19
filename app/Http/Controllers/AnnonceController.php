@@ -200,13 +200,13 @@ class AnnonceController extends Controller
                         // https://laravel.com/docs/6.x/eloquent#deleting-models
                         $annonce->delete();
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "L'ANNONCE A ETE SUPPRIMEE"; 
+                        $tabAssoJson["confirmation"] = "LA PHOTO A ETE SUPPRIMEE"; 
                     }
                     else
                     {
                         // KO UN MEMBRE ESSAIE D'EFFACER UNE ANNONCE QUI NE LUI APPARTIENT PAS
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "CETTE ANNONCE NE VOUS APPARTIENT PAS"; 
+                        $tabAssoJson["confirmation"] = "CETTE PHOTO NE VOUS APPARTIENT PAS"; 
                     }
                 }
                 // ASTUCE: MEME SI id EST MAUVAIS
@@ -308,13 +308,13 @@ class AnnonceController extends Controller
                         // POUR ENREGISTRER DANS LA TABLE SQL
                         $annonce->save();
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "L'ANNONCE A ETE MODIFIEE"; 
+                        $tabAssoJson["confirmation"] = "LA PHOTO A ETE MODIFIEE"; 
                     }
                     else
                     {
                         // KO UN MEMBRE ESSAIE D'EFFACER UNE ANNONCE QUI NE LUI APPARTIENT PAS
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "CETTE ANNONCE NE VOUS APPARTIENT PAS"; 
+                        $tabAssoJson["confirmation"] = "CETTE PHOTO NE VOUS APPARTIENT PAS"; 
                     }
                 }
             }
@@ -333,8 +333,8 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
@@ -416,7 +416,7 @@ class AnnonceController extends Controller
                 $tabInput["codePostal"] = "13013";
                 Annonce::create($tabInput);
                 // RENVOYER UNE CONFIRMATION
-                $tabAssoJson["confirmation"] = "VOTRE ANNONCE EST PUBLIEE"; 
+                $tabAssoJson["confirmation"] = "VOTRE PHOTO EST PUBLIEE"; 
             }
             // JE VAIS RENVOYER LA LISTE DES ANNONCES DE CET UTILISATEUR
             // IL FAUT FAIRE UNE REQUETE READ AVEC UN FILTRE
@@ -433,8 +433,8 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
