@@ -6,5 +6,6 @@
     </div><!-- FIN DU CONTAINER POUR VUEJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="<?php echo url('/assets/js/main.js') ?>"></script>
+    <script src="/assets/js/main-membre.js">
 </body>
 </html>
