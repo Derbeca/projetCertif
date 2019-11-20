@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Martseille</title>
     <link rel="stylesheet" href="<?php echo url('/assets/css/style.css') ?>">
 
@@ -47,11 +46,12 @@
                 <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
                 <!-- SI FORM SANS AJAX ALORS NE PAS OUBLIER method="POST" et enctype="multipart/form-data" --> 
                 <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/store" enctype="multipart/form-data" class="formMembre">
-                @csrf
+
                     <input type="text" name="titre" required placeholder="entrez votre titre">
                     <input type="file" name="photo" required placeholder="choisissez votre photo" class="inputUpload">
                     <input type="text" name="adresse" required placeholder="entrez votre adresse">
                     <button type="submit">PUBLIER PHOTO</button>
+                    @csrf
                     <div class="confirmation">
                     @{{ confirmation }}
                     </div>
@@ -65,7 +65,7 @@
                 <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
                 <!-- https://fr.vuejs.org/v2/guide/forms.html -->
                 <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/modifier" enctype="multipart/form-data" class="formMembre">
-                @csrf
+
                     <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez votre titre">
                     <input type="file" name="photo" placeholder="choisissez votre photo" class="inputUpload">
                     <img :src="annonceUpdate.photo">
@@ -73,6 +73,7 @@
                     <button type="submit">MODIFIER CETTE PHOTO (id=@{{ annonceUpdate.id }})</button>
                     <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
                     <input type="hidden" name="id"  v-model="annonceUpdate.id">
+                    @csrf
                     <div class="confirmation">
                     @{{ confirmation }}
                     </div>
