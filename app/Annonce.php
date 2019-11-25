@@ -6,7 +6,7 @@ class Annonce extends Model
 {
     // PROPRIETES D'OBJET
     protected $fillable = [
-        "titre", "photo", "adresse", "user_id",
+        "titre", "dateEvenement", "contenu", "photo", "adresse", "codePostal", "categorie", "prix", "user_id",
     ];
     // ON DECLARE LA RELATION ONE-TO-MANY
     // https://laravel.com/docs/4.2/eloquent#eager-loading

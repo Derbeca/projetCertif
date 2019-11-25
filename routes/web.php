@@ -26,6 +26,7 @@ Route::view('/contact', 'contact');
 // ET LE CODE HTML EST DANS LE FICHIER
 //      resources/views/contact.blade.php
 Route::view('/galerie', 'galerie');
+Route::view('/carte', 'carte');
 // SI JE VEUX CHANGER LA PAGE D'ACCUEIL
 Route::view('/', 'accueil');
 // JE VAIS RAJOUTER LES PAGES espace-membre ET espace-admin

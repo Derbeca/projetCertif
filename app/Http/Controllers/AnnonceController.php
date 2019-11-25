@@ -200,13 +200,13 @@ class AnnonceController extends Controller
                         // https://laravel.com/docs/6.x/eloquent#deleting-models
                         $annonce->delete();
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "LA PHOTO A ETE SUPPRIMEE"; 
+                        $tabAssoJson["confirmation"] = "L'ANNONCE A ETE SUPPRIMEE"; 
                     }
                     else
                     {
                         // KO UN MEMBRE ESSAIE D'EFFACER UNE ANNONCE QUI NE LUI APPARTIENT PAS
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "CETTE PHOTO NE VOUS APPARTIENT PAS"; 
+                        $tabAssoJson["confirmation"] = "CETTE ANNONCE NE VOUS APPARTIENT PAS"; 
                     }
                 }
                 // ASTUCE: MEME SI id EST MAUVAIS
@@ -256,9 +256,11 @@ class AnnonceController extends Controller
             $validator = Validator::make($request->all(), [
                 'id'        => 'required|numeric|min:1',
                 'titre'     => 'required|max:160',
+                'contenu'   => 'required',
                 'photo'     => 'image',         // OPTIONNEL
                 'adresse'   => 'required|max:160',
-
+                'categorie' => 'required|max:160',
+                'prix'      => 'required|numeric|min:0|max:2000000',
             ]);
             if ($validator->fails()) 
             {
@@ -276,7 +278,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "adresse"
+                    "titre", "contenu", "adresse", "categorie", "prix"
                 ]);
                 // JE DOIS TRAITER L'UPLOAD A PART
                 // https://laravel.com/docs/5.8/filesystem#file-uploads
@@ -308,13 +310,13 @@ class AnnonceController extends Controller
                         // POUR ENREGISTRER DANS LA TABLE SQL
                         $annonce->save();
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "LA PHOTO A ETE MODIFIEE"; 
+                        $tabAssoJson["confirmation"] = "L'ANNONCE A ETE MODIFIEE"; 
                     }
                     else
                     {
                         // KO UN MEMBRE ESSAIE D'EFFACER UNE ANNONCE QUI NE LUI APPARTIENT PAS
                         // RENVOYER UNE CONFIRMATION
-                        $tabAssoJson["confirmation"] = "CETTE PHOTO NE VOUS APPARTIENT PAS"; 
+                        $tabAssoJson["confirmation"] = "CETTE ANNONCE NE VOUS APPARTIENT PAS"; 
                     }
                 }
             }
@@ -333,8 +335,8 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
@@ -373,9 +375,11 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
                 'titre'     => 'required|max:160',
+                'contenu'   => 'required',
                 'photo'     => 'required|image', // SECURITE: PAS DE FICHIER PHP
                 'adresse'   => 'required|max:160',
-
+                'categorie' => 'required|max:160',
+                'prix'      => 'required|numeric|min:0|max:2000000',
             ]);
             if ($validator->fails()) 
             {
@@ -393,7 +397,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "adresse"
+                    "titre", "contenu", "adresse", "categorie", "prix"
                 ]);
                 
                 // JE DOIS TRAITER L'UPLOAD A PART
@@ -416,7 +420,7 @@ class AnnonceController extends Controller
                 $tabInput["codePostal"] = "13013";
                 Annonce::create($tabInput);
                 // RENVOYER UNE CONFIRMATION
-                $tabAssoJson["confirmation"] = "VOTRE PHOTO EST PUBLIEE"; 
+                $tabAssoJson["confirmation"] = "VOTRE ANNONCE EST PUBLIEE"; 
             }
             // JE VAIS RENVOYER LA LISTE DES ANNONCES DE CET UTILISATEUR
             // IL FAUT FAIRE UNE REQUETE READ AVEC UN FILTRE
@@ -433,8 +437,8 @@ class AnnonceController extends Controller
         {
             // ERREUR
             // IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE
-            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
-            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE PHOTO";
+            $tabAssoJson["erreur"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
+            $tabAssoJson["confirmation"] = "IL FAUT ETRE CONNECTE POUR PUBLIER UNE ANNONCE";
         }
         return $tabAssoJson;
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 

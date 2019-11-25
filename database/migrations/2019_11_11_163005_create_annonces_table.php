@@ -34,7 +34,9 @@ class CreateAnnoncesTable
             */
             $table->string('titre');		
             $table->string('photo');	
-            $table->string('adresse');	
+            $table->string('adresse');
+            $table->string('categorie');
+            	
 
             // https://laravel.com/docs/5.0/schema#foreign-keys
             // ON AJOUTE UNE COLONNE DE CLE ETRANGERE 

@@ -5,7 +5,9 @@
     </footer>
     </div><!-- FIN DU CONTAINER POUR VUEJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="<?php echo url('/assets/js/main.js') ?>"></script>
-    <script src="/assets/js/main-membre.js">
+    <script src="<?php echo url('/assets/js/main-membre.js') ?>"></script>
+    <script src="<?php echo url('/assets/js/main-carte.js') ?>"></script>
 </body>
 </html>
