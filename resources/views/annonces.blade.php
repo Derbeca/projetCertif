@@ -41,16 +41,6 @@ $tabAnnonce = \App\Annonce
 // print_r($tabAnnonce);
 foreach($tabAnnonce as $annonce)
 {
-    // CHOIX PAS EFFICACE DU TOUT (CAR DANS UNE BOUCLE)
-    // POUR CHAQUE ANNONCE, JE FAIS UNE REQUETE SUPPLEMENTAIRE 
-    // POUR RECUPERER LES INFOS SUR User
-    $auteur = App\User::find($annonce->user_id);
-    // LES COLONNES SONT DES PROPRIETES 
-    // DES OBJETS DE LA CLASSE Annonce
-    // sécurité dans le cas où il n'y a pas de user
-    $name = $auteur->name ?? "";
-    $nameJointure = $annonce->name ?? "";
-    $nameEager = $annonce->user ? $annonce->user->name : "";
     echo
 <<<CODEHTML
 <article>

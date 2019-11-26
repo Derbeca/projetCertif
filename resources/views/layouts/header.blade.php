@@ -39,6 +39,19 @@
                 <ul id="menu">
                     <li><a href="<?php echo url('/register') ?>">Inscription</a></li>
                     <li><a href="<?php echo url('/login') ?>">Connexion</a></li>
+                    <li>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Déconnexion') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                     <li><a href="<?php echo url('/espace-membre') ?>">Mon espace</a></li>
                 </ul>
             </div>

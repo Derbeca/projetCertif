@@ -17,9 +17,8 @@ class AnnonceController extends Controller
         // https://laravel.com/docs/5.7/validation#available-validation-rules
         // https://laravel.com/docs/5.7/validation#a-note-on-optional-fields
         $validator = Validator::make($request->all(), [
-            'codePostal'      => 'required|min:5|max:5',
-            'dateDebut'       => 'nullable|date_format:Y-m-d',   // OPTIONNEL
-            'dateFin'         => 'nullable|date_format:Y-m-d',   // OPTIONNEL
+            'adresse'      => 'required|min:5|max:5',
+            'categorie'    => 'nullable',   // OPTIONNEL
         ]);
         if ($validator->fails()) 
         {
@@ -37,13 +36,22 @@ class AnnonceController extends Controller
             // IL FAUT FAIRE UNE REQUETE READ AVEC UN FILTRE
             // https://laravel.com/docs/6.x/queries#where-clauses
             // CODE BASIQUE SUR DIFFERENTS SCENARIOS POSSIBLES
-            $codePostal = $request->input("codePostal");
-            $dateDebut  = $request->input("dateDebut");
-            $dateFin    = $request->input("dateFin");
+            $adresse = $request->input("adresse");
+            $categorie  = $request->input("categorie");
+
+            $tabAnnonce = \App\Annonce
+            ::where([
+                [ "adresse",     "=", $adresse],
+                [ "categorie",   "=", $categorie],
+            ])
+            ->latest("updated_at")   // CONSTRUCTION DE LA REQUETE
+            ->get();                 // JE VEUX OBTENIR LES RESULTATS
+            $tabAssoJson["annonces"] = $tabAnnonce; 
+
             // ON NE VEUT QUE LES EVENEMENTS FUTURS
-            $dateJour  = date("Y-m-d");
+
             // ON A codePostal MAIS NI dateDebut NI dateFIN
-            if (($dateDebut == null) && ($dateFin == null))
+            /* if (($dateDebut == null) && ($dateFin == null))
             {
                 $tabAnnonce = \App\Annonce
                 // ON FILTRE SUR user_id POUR OBTENIR 
@@ -104,7 +112,7 @@ class AnnonceController extends Controller
                 ->latest("updated_at")   // CONSTRUCTION DE LA REQUETE
                 ->get();                 // JE VEUX OBTENIR LES RESULTATS
                 $tabAssoJson["annonces"] = $tabAnnonce; 
-            }
+            } */
                 
         }
         return $tabAssoJson;
@@ -256,11 +264,9 @@ class AnnonceController extends Controller
             $validator = Validator::make($request->all(), [
                 'id'        => 'required|numeric|min:1',
                 'titre'     => 'required|max:160',
-                'contenu'   => 'required',
                 'photo'     => 'image',         // OPTIONNEL
                 'adresse'   => 'required|max:160',
-                'categorie' => 'required|max:160',
-                'prix'      => 'required|numeric|min:0|max:2000000',
+                'categorie' => 'required',
             ]);
             if ($validator->fails()) 
             {
@@ -278,7 +284,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "contenu", "adresse", "categorie", "prix"
+                    "titre", "adresse", "categorie"
                 ]);
                 // JE DOIS TRAITER L'UPLOAD A PART
                 // https://laravel.com/docs/5.8/filesystem#file-uploads
@@ -375,11 +381,9 @@ class AnnonceController extends Controller
             // https://laravel.com/docs/5.7/validation#available-validation-rules
             $validator = Validator::make($request->all(), [
                 'titre'     => 'required|max:160',
-                'contenu'   => 'required',
                 'photo'     => 'required|image', // SECURITE: PAS DE FICHIER PHP
                 'adresse'   => 'required|max:160',
-                'categorie' => 'required|max:160',
-                'prix'      => 'required|numeric|min:0|max:2000000',
+                'categorie' => 'required',
             ]);
             if ($validator->fails()) 
             {
@@ -397,7 +401,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "contenu", "adresse", "categorie", "prix"
+                    "titre", "adresse", "categorie"
                 ]);
                 
                 // JE DOIS TRAITER L'UPLOAD A PART
@@ -416,8 +420,8 @@ class AnnonceController extends Controller
                 // ON VA AJOUTER L'INFO DU user_id
                 $tabInput["user_id"] = $utilisateurConnecte->id;
                 // COMPLETER AVEC dateEvenement
-                $tabInput["dateEvenement"] = date("Y-m-d");
-                $tabInput["codePostal"] = "13013";
+                // $tabInput["dateEvenement"] = date("Y-m-d");
+                // $tabInput["codePostal"] = "13013";
                 Annonce::create($tabInput);
                 // RENVOYER UNE CONFIRMATION
                 $tabAssoJson["confirmation"] = "VOTRE ANNONCE EST PUBLIEE"; 

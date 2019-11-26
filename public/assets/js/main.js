@@ -23,14 +23,16 @@ paramVue.mounted = () => {
     // }
 
     // Menu login
-    function montrerMenuLogin() {
+   
       var btnLogin = document.querySelector('#login');
       var menu = document.querySelector('ul');
-      btnLogin.addEventListener('click', (event) => {
+      btnLogin.addEventListener('mouseover', (event) => {
           menu.classList.add('montrer');
       });
-    };
-    montrerMenuLogin();
+      btnLogin.addEventListener('mouseout', (event) => {
+        menu.classList.remove('montrer');
+      });
+
 
     // function cacherMenuLogin() {
     //   var menu = document.querySelector('ul');

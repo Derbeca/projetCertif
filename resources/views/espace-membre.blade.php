@@ -1,15 +1,5 @@
 @include('layouts.header')
 <div id="app">
-        <header>
-            <h1>ESPACE MEMBRE</h1>
-            <nav>
-                <ul>
-                    <li><a href="<?php echo url('/') ?>">accueil</a></li>
-                    <li><a href="<?php echo url('/annonces') ?>">annonces</a></li>
-                    <li><a href="<?php echo url('/deconnexion') ?>">deconnexion</a></li>
-                </ul>
-            </nav>
-        </header>
         <main>
             <section>
                 <h3>FORMULAIRE DE CREATION D'UNE ANNONCE</h3>
@@ -17,17 +7,18 @@
     <!-- SI FORM SANS AJAX ALORS NE PAS OUBLIER method="POST" et enctype="multipart/form-data" --> 
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/store" enctype="multipart/form-data">
 
-        <input type="file" name="photo" required placeholder="choisissez votre photo">
+        <input type="file" name="photo" id="inputPhoto" required placeholder="choisissez votre photo">
         <input type="text" name="titre" required placeholder="entrez votre titre">
-        <input type="text" name="adresse" required placeholder="entrez votre adresse">
-        <select name="categorie" required placeholder="choisisez unee categorie">
+        <input type="text" name="adresse" required placeholder="entrez un code postal">
+        <select name="categorie" required placeholder="choisissez une categorie">
+            <option>choisissez une categorie</option>
             <option value="graffiti">Graffiti</option>
             <option value="pochoir">Pochoir</option>
             <option value="sticker">Sticker</option>
             <option value="installation">Installation</option>
             <option value="mur vide">Mur vide</option>
             <option value="evenement">Evenement</option>
-            <option value="Autre">Autre</option>
+            <option value="autre">Autre</option>
         </select>
         <button type="submit">PUBLIER UNE PHOTO</button>
         <div class="confirmation">
@@ -43,13 +34,20 @@
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
     <form @submit.prevent="envoyerFormAjax" method="POST" action="annonce/modifier" enctype="multipart/form-data">
-        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez votre titre">
-        <textarea name="contenu" v-model="annonceUpdate.contenu" required placeholder="entrez votre contenu" rows="8"></textarea>
         <input type="file" name="photo" placeholder="choisissez votre photo">
         <img :src="annonceUpdate.photo">
+        <input type="text" v-model="annonceUpdate.titre" name="titre" required placeholder="entrez votre titre">
         <input type="text" v-model="annonceUpdate.adresse" name="adresse" required placeholder="entrez votre adresse">
-        <input type="text" v-model="annonceUpdate.categorie" name="categorie" required placeholder="entrez votre categorie">
-        <input type="number"  v-model="annonceUpdate.prix" name="prix" required placeholder="entrez votre prix">
+        <select name="categorie" required placeholder="choisissez une categorie">
+            <option>choisissez une categorie</option>
+            <option value="graffiti">Graffiti</option>
+            <option value="pochoir">Pochoir</option>
+            <option value="sticker">Sticker</option>
+            <option value="installation">Installation</option>
+            <option value="mur vide">Mur vide</option>
+            <option value="evenement">Evenement</option>
+            <option value="autre">Autre</option>
+        </select>
         <button type="submit">MODIFIER CETTE ANNONCE (id=@{{ annonceUpdate.id }})</button>
         <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
         <input type="hidden" name="id"  v-model="annonceUpdate.id">
@@ -61,17 +59,22 @@
     </form>
             </section>
 
-
+        <!-- AFFICHER LA LISTE D'ANNONCES-->
             <section>
                 <h3>LISTE DE MES ANNONCES</h3>
                 <div class="listeAnnonce">
                     <article v-for="annonce in annonces">
-                        <h4>@{{ annonce.titre }}</h4>
-                        <p>@{{ annonce.contenu }}</p>
                         <img :src="annonce.photo">
-                        <button @click.prevent="modifierAnnonce(annonce)">modifier</button>
-                        <!-- COOL: AVEC VUEJS JE PEUX PASSER annonce COMME SI C'ETAIT UNE VARIABLE JS-->
-                        <button @click.prevent="supprimerAnnonce(annonce)">supprimer</button>
+                        <div id="contenu">
+                            <h4>@{{ annonce.titre }}</h4>
+                            <p>@{{ annonce.categorie }}</p>
+                            <p>@{{ annonce.adresse }}</p>
+                        </div>
+                        <div id="btns">
+                            <button @click.prevent="modifierAnnonce(annonce)">MODIFIER</button>
+                            <!-- COOL: AVEC VUEJS JE PEUX PASSER annonce COMME SI C'ETAIT UNE VARIABLE JS-->
+                            <button @click.prevent="supprimerAnnonce(annonce)">SUPPRIMER</button>
+                        </div>
                     </article>
                 </div>
             </section>
@@ -173,3 +176,5 @@ var app = new Vue({
   }
 });
     </script>
+</body>
+</html>

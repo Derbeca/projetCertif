@@ -2,9 +2,13 @@
 body,h1 {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     margin: 0;
+    height: auto;
+}
+main {
+    min-height: 70vh;
 }
 #container {
-    background-image: url('../images/f19de8cd83600c23a60a6ee3fe425364_small.jpg');
+    background-image: url('../images/photos/f19de8cd83600c23a60a6ee3fe425364_small.jpg');
     background-size: 120%;
     background-repeat: no-repeat;
     height: 100vh;
@@ -142,19 +146,29 @@ article img {
     height: 200px;
     object-fit: cover;
 }
+#contenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 article h4 {
     font-size: 16px;
     margin-left: 10px;
     font-weight: bolder;
     color: white;
+    width: 100%;
 }
 article p {
     font-size: 14px;
-    margin-left: 10px;
+    margin: 10px;
     color: white;
 }
+#btns {
+    display: flex;
+    justify-content: center;
+}
 .listeAnnonce button {
-    margin: 0;
+    margin: 10px;
     background-color: #d1b467;
 }
 
@@ -170,8 +184,6 @@ footer {
     background-color: #d1b467;
     height: 10vh;
     width: 100%;
-    position: fixed;
-    bottom: 0;
 }
 #logoCarte {
     float: right;
@@ -196,12 +208,20 @@ input {
     border: none;
     margin: 10px;
     padding-left: 5px;
-    color: white;
+    color: black;
+}
+#inputPhoto {
+    background-color: transparent;
 }
 ::placeholder {
     padding-left: 5px;
-    color: white;
+    color: grey;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+select {
+    margin: 10px;
+    width: 91%;
+    height: 30px;
 }
 button {
     width: 120px;
@@ -319,4 +339,15 @@ nav{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* CSS PAGE CONTACT */
+
+textarea {
+    width: 90%;
+    height: 100px;
+    margin: 10px;
+}
+label p {
+    margin: 0;
 }

@@ -45,7 +45,16 @@
         <section>
             <form @submit.prevent="rechercherAjax" action="">
                 <input type="text" name="adresse" required placeholder="entrez un code postal">
-                <input type="text" name="categorie" placeholder="entrez la categorie">
+                <select name="categorie" required placeholder="choisissez une categorie">
+                    <option>choisissez une categorie</option>
+                    <option value="graffiti">Graffiti</option>
+                    <option value="pochoir">Pochoir</option>
+                    <option value="sticker">Sticker</option>
+                    <option value="installation">Installation</option>
+                    <option value="mur vide">Mur vide</option>
+                    <option value="evenement">Evenement</option>
+                    <option value="autre">Autre</option>
+                </select>
                 <button type="submit">CHERCHER</button>
                 <!-- PROTECTION DE LARAVEL CONTRE LES ATTAQUES CSRF -->
                 <!-- Sécurité: Cross Site Request Forgery -->

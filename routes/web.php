@@ -47,6 +47,7 @@ Route::any('/deconnexion', 'AnnonceController@deconnexion');
 // A LA CLASSE NewsletterController 
 // ET AVEC LA METHODE store 
 Route::any('/newsletters/store', 'NewsletterController@store');
+Route::any('/contact/store', 'ContactController@store');
 // POUR CREER LA ROUTE QUI VA GERER LE CRUS SUR LES ANNONCES
 // CREATE
 // any => ON PEUT UTILISER GET OU POST
