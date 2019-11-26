@@ -74,9 +74,9 @@
                             <p>@{{ annonce.adresse }}</p>
                         </div>
                         <div id="btns">
-                            <button @click.prevent="modifierAnnonce(annonce)">MODIFIER</button>
+                            <button @click.prevent="modifierAnnonce(annonce)"><img src="../public/assets/images/icon_modifier.png"></button>
                             <!-- COOL: AVEC VUEJS JE PEUX PASSER annonce COMME SI C'ETAIT UNE VARIABLE JS-->
-                            <button @click.prevent="supprimerAnnonce(annonce)">SUPPRIMER</button>
+                            <button @click.prevent="supprimerAnnonce(annonce)"><img src="../public/assets/images/icon_supprimer.png"></button>
                         </div>
                     </article>
                 </div>
@@ -174,7 +174,7 @@ var app = new Vue({
       // ICI JE RAJOUTE LES VARIABLES GEREES PAR VUEJS
     annonceUpdate: null,  
     annonces: [],
-    confirmation: 'ici on verra le message de confirmation',  
+    confirmation: '',  
     message: 'Hello Vue !'
   }
 });

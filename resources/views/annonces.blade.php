@@ -46,6 +46,7 @@ foreach($tabAnnonce as $annonce)
 <article>
     <img src="{$annonce->photo}">
     <h4>{$annonce->titre}</h4>
+    <p>{$annonce->categorie}</p>
     <p>{$annonce->adresse}</p>
 </article>
 CODEHTML;

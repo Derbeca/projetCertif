@@ -139,7 +139,9 @@ ul li {
 article {
     width: 90%;
     margin: 10px auto;
-    background-color: black;
+    border: 1px solid gray;
+    background-color: white;
+    /* box-shadow: 5px 5px 8px #eeeeee; */
 }
 article img {
     width: 100%;
@@ -155,13 +157,13 @@ article h4 {
     font-size: 16px;
     margin-left: 10px;
     font-weight: bolder;
-    color: white;
+    color: black;
     width: 100%;
 }
 article p {
     font-size: 14px;
     margin: 10px;
-    color: white;
+    color: #d1b467;
 }
 #btns {
     display: flex;
@@ -170,6 +172,14 @@ article p {
 .listeAnnonce button {
     margin: 10px;
     background-color: #d1b467;
+    width: 50px;
+    height: 50px;
+}
+#btns img {
+    width: 30px;
+    height: 30px;
+    margin: 5px auto;
+    display: block;
 }
 
 /* CSS FOOTER */
@@ -256,6 +266,10 @@ h3 {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     text-align: center;
     color: #d1b467;
+}
+.confirmation {
+    text-align: center;
+    margin: 10px auto;
 }
 
 /* CSS REGISTER ET LOGIN */
