@@ -9,7 +9,10 @@
 
         <input type="file" name="photo" id="inputPhoto" required placeholder="choisissez votre photo">
         <input type="text" name="titre" required placeholder="entrez votre titre">
-        <input type="text" name="adresse" required placeholder="entrez un code postal">
+        <input type="text" name="adresse" id="addr" required placeholder="entrez un code postal">
+        <!-- ICI ON RECUPERE LES COORDONNEES LAT ET LONG-->
+        <input type="hidden" name="lat" id="lat" size=12 value="">
+        <input type="hidden" name="lon" id="lon" size=12 value="">
         <select name="categorie" required placeholder="choisissez une categorie">
             <option>choisissez une categorie</option>
             <option value="graffiti">Graffiti</option>

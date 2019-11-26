@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Martseille</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="<?php echo url('/assets/css/style.css') ?>">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 
 </head>
 <body>
