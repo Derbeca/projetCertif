@@ -56,7 +56,7 @@ class ContactController extends Controller
         // => ICI ON FAIT LES CONTROLES DE SECURITE
         // => CONTROLLER DANS MVC
         $validator = Validator::make($request->all(), [
-            'email'     => 'required|email|unique:contacts|max:160',
+            'email'     => 'required|email|max:160',
             'nom'       => 'required|max:160',
             'message'   => 'required',
         ]);
@@ -77,8 +77,8 @@ class ContactController extends Controller
             $message = $request->input("message");
             
             $tabAssoColonneValeur = [
-                "nom"   => $nom,
-                "email" => $email,
+                "nom"     => $nom,
+                "email"   => $email,
                 "message" => $message,
             ];
             // DEBUG
