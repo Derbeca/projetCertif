@@ -1,19 +1,13 @@
+/* CSS MOBILE */
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body,h1 {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     margin: 0;
     height: auto;
 }
-main {
-    min-height: 70vh;
-}
-#container {
-    background-image: url('../images/photos/f19de8cd83600c23a60a6ee3fe425364_small.jpg');
-    background-size: 120%;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
 #mySidebar {
+    width: 100%;
     background-color: rgb(0, 0, 0);
     height: 100vh;
     position: fixed;
@@ -21,7 +15,7 @@ main {
 #menuAccueil {
     margin: auto;
     padding-top: 70px;
-    width: 65%;
+    width: 202px;
 }
 #menuAccueil a {
     display: flex;
@@ -50,7 +44,7 @@ main {
     margin: auto;
 }
 #logoAccueil img {
-    padding-top: 120px;
+    padding-top: 80px;
     width: 100%;
 }
 #logo {
@@ -59,12 +53,41 @@ main {
 #logo img {
     width: 100%;
 }
+/* main {
+    min-height: 70vh;
+} */
+#container {
+    background-image: url('../images/photos/f19de8cd83600c23a60a6ee3fe425364_small.jpg');
+    background-size: 120%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#monTexte {
+    text-align: center;
+    margin: 20px;
+    color: #d1b467;
+    font-size: 24px;
+}
+#source {
+    font-size: 14px;
+    font-style: italic;
+}
 #btn-plus {
     display: block;
     position: fixed;
+    right: 0;
+    left: 0;
     bottom: 10px;
-    width: 100%;
-    padding: 0;
+    width: 150px;
+    height: 30px;
+    padding: 13px 0 0;
+    background-color: black;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 20px;
+    margin: auto;
+    color: white;
+    font-weight: bolder;
 }
 #btn-plus img {
     margin: auto;
@@ -94,12 +117,16 @@ header {
     height: auto;
     padding: 0 0 0 10px;
 }
-#login img {
-    margin: 5px;
-    display: block;
-    margin: 15px auto;
+#login {
+    display: flex;
 }
-#logoMenu {
+#login img {
+    margin: 15px;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+#logoMenuB {
     float: right;
     padding: 10px;
     width: 40px;
@@ -137,8 +164,8 @@ ul li {
     justify-content: center;
 }
 article {
-    width: 90%;
-    margin: 10px auto;
+    width: 300px;
+    margin: 10px;
     border: 1px solid gray;
     background-color: white;
     /* box-shadow: 5px 5px 8px #eeeeee; */
@@ -216,7 +243,7 @@ input {
     height: 30px;
     background-color: #eeeeee;
     border: none;
-    margin: 10px;
+    margin: 10px auto;
     padding-left: 5px;
     color: black;
 }
@@ -229,7 +256,7 @@ input {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 select {
-    margin: 10px;
+    margin: 10px auto;
     width: 91%;
     height: 30px;
 }
@@ -387,8 +414,103 @@ html, body {
 textarea {
     width: 90%;
     height: 100px;
-    margin: 10px;
+    margin: 10px auto;
 }
 label p {
     margin: 0;
+}
+
+/* CSS TABLET */
+@media (min-width: 768px) {
+    #container {
+        background-image: url(../images/photos/20170425_152000.jpg);
+    }
+    #headerAccueil {
+        height: 300px;
+    }
+    header {
+        height: 20%;
+    }
+    #logoAccueil {
+        width: 30%;
+    }
+    #logoAccueil img {
+        padding-top: 120px;
+    }
+    #mySidebar {
+        width: 30%;
+        position: fixed;
+        right: 0;
+    }
+    #menuAccueil {
+        padding-top: 50px;
+        width: 200px;
+    }
+    #menuAccueil a img {
+        width: 35px;
+        height: 35px;
+        margin: 5px;
+    }
+    #menuAccueil a p {
+        padding-top: 10px;
+        font-size: 14px;
+    }
+    #justify a {
+        width: 15%;
+    }
+    #logo img {
+        padding-top: 10px;
+    }
+}
+
+/* CSS DESKTOP */
+@media (min-width: 1024px) {
+    #container {
+        height: 65vh;
+        background-position: center;
+    }
+    #headerAccueil {
+        height: 110px;
+    }
+    #entete {
+        padding: 0;
+    }
+    #logo, #logoAccueil {
+        width: 10%;
+        display: block;
+        padding: 20px;
+        margin: 0 10px;
+    }
+    #logo, #logoAccueil img {
+        padding: 0;
+    }
+    #btn-plus {
+        top: -85%;
+        background-color: #d1b467;
+        color: black;
+    }
+    form {
+        width: 60%;
+    }
+    #mySidebar {
+        width: 30%;
+        position: fixed;
+        right: 0;
+    }
+    #menuAccueil {
+        padding-top: 50px;
+        width: 220px;
+    }
+    #menuAccueil a img {
+        width: 45px;
+        height: 45px;
+        margin: 10px;
+    }
+    #menuAccueil a p {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    
+
 }

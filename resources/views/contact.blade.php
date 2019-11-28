@@ -4,18 +4,9 @@
         <section>
             <h3>FORMULAIRE DE CONTACT</h3>
             <form @submit.prevent="envoyerFormAjax" method="POST" action="contact/store">
-            <label>
-                <p>Email</p>
                 <input type="email" name="email" required placeholder="entrez votre email">
-            </label>
-            <label>
-                <p>Nom</p>
                 <input type="text" name="nom" required placeholder="entrez votre nom">
-            </label>
-            <label>
-                <p>Message</p>
                 <textarea name="message" placeholder="entrez votre message"></textarea>
-            </label>
                 <button type="submit">ENVOYER MESSAGE</button>
                 <div class="confirmation">
                 @{{ confirmation }}

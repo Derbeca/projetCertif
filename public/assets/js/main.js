@@ -7,10 +7,9 @@ paramVue.data           = {
 paramVue.mounted = () => {
     // Open and close sidebar
     var sidebar = document.querySelector("#mySidebar");
-    var boutonMenu = document.querySelector("#logoMenu");
+    var boutonMenu = document.querySelector("#logoMenu, #logoMenuB");
     boutonMenu.addEventListener('click', (event) => {
       console.log('tu as clické');
-      sidebar.style.width = "100%";
       sidebar.style.display = "block";
     });
     var boutonFermer = document.querySelector("#logoFermer");
@@ -24,23 +23,16 @@ paramVue.mounted = () => {
 
     // Menu login
    
-      var btnLogin = document.querySelector('#login');
-      var menu = document.querySelector('ul');
-      btnLogin.addEventListener('mouseover', (event) => {
-          menu.classList.add('montrer');
-      });
-      btnLogin.addEventListener('mouseout', (event) => {
+    var btnLogin = document.querySelector('#login img');
+    var menu = document.querySelector('ul');
+
+    btnLogin.addEventListener('mouseover', (event) => {
+        menu.classList.add('montrer');
+    });
+    btnLogin.addEventListener('mouseout', (event) => {
         menu.classList.remove('montrer');
-      });
+    });
 
-
-    // function cacherMenuLogin() {
-    //   var menu = document.querySelector('ul');
-    //   menu.addEventListener('click', (event) => {
-    //     menu.classList.remove('montrer');
-    //   });
-    // };
-    // cacherMenuLogin();
 },
 paramVue.methods = {
     rechercherAjax: function (event) {

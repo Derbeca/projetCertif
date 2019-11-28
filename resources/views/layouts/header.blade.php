@@ -36,7 +36,7 @@
                 <img src="../public/assets/images/logo_martseille.png">
             </a>
             <div id="login">
-                <img src="../public/assets/images/icon_login.png">
+                <img src="../public/assets/images/icon_login.png" id="logoLogin">
                 <ul id="menu">
                     <li><a href="<?php echo url('/register') ?>">Inscription</a></li>
                     <li><a href="<?php echo url('/login') ?>">Connexion</a></li>
@@ -55,8 +55,7 @@
                     </li>
                     <li><a href="<?php echo url('/espace-membre') ?>">Mon espace</a></li>
                 </ul>
+                <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
             </div>
-            <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
         </span> 
-
     </header>

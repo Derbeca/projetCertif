@@ -26,15 +26,23 @@
 
         <!-- HEADER -->
         <header id="headerAccueil">
-            <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+            <img src="../public/assets/images/icon_hamburguer.png" id="logoMenuB">
             <div id="entete">
                 <a href="<?php echo url('/') ?>" id="logoAccueil"><img src="../public/assets/images/logo_martseille.png"></a>
             </div>
         </header>
+        </div>
         <main>
+            <div id="monTexte">
+                <p>
+                «Marseille est une place du graffiti reconnue mondialement. Les street-artistes ont fait la renommée de quartiers tels que le Cours Julien ou le Panier. Aujourd’hui, les pouvoirs publics y voient un facteur d’attractivité tout en luttant contre le graff vandale.» 
+                </p>
+                <p id="source">(Made in Marseille, 22/02/19)</p>
+            </div>
+            <a href="<?php echo url('/espace-membre') ?>" id="btn-plus">+ PUBLIER PHOTO</a>
         </main>
+
         <footer id="footerAccueil">
-            <a href="<?php echo url('/espace-membre') ?>" id="btn-plus"><img src="../public/assets/images/bouton_plus.png"></a>
     <!--         <nav>
                 <ul>
                     <li><a href="<?php echo url('/espace-membre') ?>">membre</a></li>
@@ -44,7 +52,7 @@
             <p>tous droits réservés 2019</p> -->
         </footer>
     </div><!-- FIN DU CONTAINER POUR VUEJS -->
-    </div>
+
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="<?php echo url('/assets/js/main.js') ?>"></script>
 
