@@ -3,10 +3,12 @@ paramVue.el             = '#app';
 paramVue.data           = {
   annonces: [],       // MA VARIABLE VUEJS QUI GARDE EN MEMOIRE LA LISTE DES ANNONCES
   message: 'Hello Vue !',
+  menuGenerale: false,
+  menuLogin: false
 };
 paramVue.mounted = () => {
     // Open and close sidebar
-    var sidebar = document.querySelector("#mySidebar");
+/*     var sidebar = document.querySelector("#mySidebar");
     var boutonMenu = document.querySelector("#logoMenu, #logoMenuB");
     boutonMenu.addEventListener('click', (event) => {
       console.log('tu as clické');
@@ -16,25 +18,26 @@ paramVue.mounted = () => {
     boutonFermer.addEventListener('click', (event) => {
       console.log('tu as clické');
       sidebar.style.display = "none";
-    });
+    }); */
     // function w3_close() {
     //   document.getElementById("mySidebar").style.display = "none";
     // }
 
     // Menu login
    
-    var btnLogin = document.querySelector('#login img');
+/*     var btnLogin = document.querySelector('#login img');
     var menu = document.querySelector('ul');
 
-    btnLogin.addEventListener('mouseover', (event) => {
+    btnLogin.addEventListener('click', (event) => {
         menu.classList.add('montrer');
     });
-    btnLogin.addEventListener('mouseout', (event) => {
+    menu.addEventListener('click', (event) => {
         menu.classList.remove('montrer');
-    });
+    }); */
 
 },
 paramVue.methods = {
+
     rechercherAjax: function (event) {
         // debug
         // event.target CONTIENT LA BALISE form

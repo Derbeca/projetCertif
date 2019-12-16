@@ -13,10 +13,14 @@
 
 </head>
 <body>
-<!-- <div id="app"> -->
+<div id="app">
 <!-- MENU DEPLIANT CACHÉ-->
-    <nav id="mySidebar">
-        <img src="../public/assets/images/icon_fermer.png" id="logoFermer">
+<transition name="fade">
+    <nav id="mySidebar" v-show="menuGenerale">
+        <div @click="menuGenerale = false">
+            <img src="../public/assets/images/icon_fermer.png" id="logoFermer">
+        </div>
+
         <div id="menuAccueil">
             <a href="<?php echo url('/') ?>"><img src="../public/assets/images/icon_home.png"><p>accueil</p></a>
             <a href="<?php echo url('/annonces') ?>"><img src="../public/assets/images/icon_galerie.png"><p>galerie</p></a>
@@ -28,6 +32,7 @@
             <a href="<?php echo url('/contact') ?>"><img src="../public/assets/images/icon_contact.png"><p>contact</p></a>
         </div>
     </nav>
+</transition>
 
     <!-- HEADER -->
     <header >
@@ -36,8 +41,11 @@
                 <img src="../public/assets/images/logo_martseille.png">
             </a>
             <div id="login">
-                <img src="../public/assets/images/icon_login.png" id="logoLogin">
-                <ul id="menu">
+                <div  @click="menuLogin = !menuLogin">
+                    <img src="../public/assets/images/icon_login.png" id="logoLogin">
+                </div>
+                <transition name="fade">
+                <ul id="menu" v-show="menuLogin">
                     <li><a href="<?php echo url('/register') ?>">Inscription</a></li>
                     <li><a href="<?php echo url('/login') ?>">Connexion</a></li>
                     <li>
@@ -55,7 +63,10 @@
                     </li>
                     <li><a href="<?php echo url('/espace-membre') ?>">Mon espace</a></li>
                 </ul>
-                <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                </transition>
+                <div @click="menuGenerale = !menuGenerale">
+                    <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                </div>
             </div>
         </span> 
     </header>

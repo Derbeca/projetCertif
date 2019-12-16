@@ -12,8 +12,11 @@
     <div id="app">
     <div id="container">
         <!-- MENU DEPLIANT CACHÉ-->
-        <nav id="mySidebar">
+        <transition name="fade">
+        <nav id="mySidebar" v-show="menuGenerale">
+        <div @click="menuGenerale = false">
             <img src="../public/assets/images/icon_fermer.png" id="logoFermer">
+        </div>
             <div id="menuAccueil">
                 <a href="<?php echo url('/') ?>"><img src="../public/assets/images/icon_home.png"><p>accueil</p></a>
                 <a href="<?php echo url('/annonces') ?>"><img src="../public/assets/images/icon_galerie.png"><p>galerie</p></a>
@@ -23,10 +26,13 @@
                 <a href="<?php echo url('/contact') ?>"><img src="../public/assets/images/icon_contact.png"><p>contact</p></a>
             </div>
         </nav>
+        </transition>
 
         <!-- HEADER -->
         <header id="headerAccueil">
-            <img src="../public/assets/images/icon_hamburguer.png" id="logoMenuB">
+            <div @click="menuGenerale = !menuGenerale">
+                <img src="../public/assets/images/icon_hamburguer.png" id="logoMenuB">
+            </div>
             <div id="entete">
                 <a href="<?php echo url('/') ?>" id="logoAccueil"><img src="../public/assets/images/logo_martseille.png"></a>
             </div>

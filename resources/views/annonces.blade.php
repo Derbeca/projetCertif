@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div id="app">
+
     <main>
         <section>
             <div class="listeAnnonce">
