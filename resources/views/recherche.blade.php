@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div id="app">
+
     <main>
         <section>
             <form @submit.prevent="rechercherAjax" action="">
@@ -65,12 +65,9 @@ CODEHTML;
             </div>
         </section>
     </main>
-</div><!-- FIN DU CONTAINER POUR VUEJS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="<?php echo url('/assets/js/main.js') ?>"></script>
+    @include('layouts.footer')
 
-    <script>
-    // MAINTENANT JE PEUX UTILISER VUEJS
+  <!--   // MAINTENANT JE PEUX UTILISER VUEJS
     /* var app = new Vue({
   el: '#app',
   methods: {
@@ -111,4 +108,4 @@ CODEHTML;
     </script>
 
 </body>
-</html>
+</html> -->

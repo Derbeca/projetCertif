@@ -30,8 +30,33 @@
 
         <!-- HEADER -->
         <header id="headerAccueil">
-            <div @click="menuGenerale = !menuGenerale">
-                <img src="../public/assets/images/icon_hamburguer.png" id="logoMenuB">
+        <div id="login">
+                <div  @click="menuLogin = !menuLogin">
+                    <img src="../public/assets/images/icon_login.png" id="logoLogin">
+                </div>
+                <transition name="fade">
+                <ul id="menu" v-show="menuLogin">
+                    <li><a href="<?php echo url('/register') ?>">Inscription</a></li>
+                    <li><a href="<?php echo url('/login') ?>">Connexion</a></li>
+                    <li>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Déconnexion') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    <li><a href="<?php echo url('/espace-membre') ?>">Mon espace</a></li>
+                </ul>
+                </transition>
+                <div @click="menuGenerale = !menuGenerale">
+                    <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                </div>
             </div>
             <div id="entete">
                 <a href="<?php echo url('/') ?>" id="logoAccueil"><img src="../public/assets/images/logo_martseille.png"></a>

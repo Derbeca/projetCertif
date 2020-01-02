@@ -117,6 +117,8 @@ header {
 }
 #login {
     display: flex;
+    justify-content: space-between;
+    float: right;
 }
 #login img {
     margin: 15px;

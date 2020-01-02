@@ -1,5 +1,5 @@
 @include('layouts.header')
-<div id="app">
+<!-- <div id="app"> -->
         <main>
             <section>
                 <h3>FORMULAIRE DE CREATION D'UNE ANNONCE</h3>
@@ -82,17 +82,13 @@
                 </div>
             </section>
         </main>
-        <footer>
-        <!-- IL Y A UN CONFLOT ENTRE BLADE ET VUEJS -->
-        <!-- IL FAUT AJOUTER @ POUR QUE BLADE NE S'ACTIVE PAS SUR LES DELIMITEURS POUR VUEJS -->
-            @{{ message }}
-        </footer>
-    </div><!-- fin du container #app -->
+        </div><!-- FIN DU CONTAINER POUR VUEJS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="<?php echo url('/assets/js/main.js') ?>"></script>
 
-    <!-- CHARGER LE CODE DE VUEJS -->
-    <!-- https://fr.vuejs.org/v2/guide/index.html -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
+</body>
+</html>
+   <!--  <script>
 // ON PEUT ENSUITE COMMENCER A UTILISER VUEJS
 var app = new Vue({
   el: '#app',
@@ -181,3 +177,4 @@ var app = new Vue({
     </script>
 </body>
 </html>
+ -->
