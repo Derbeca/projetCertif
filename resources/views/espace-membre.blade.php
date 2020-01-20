@@ -32,7 +32,7 @@
     </form>
             </section>
             <section class="lightbox" v-if="annonceUpdate">
-                <button @click="annonceUpdate = null">FERMER</button>
+                <div @click="annonceUpdate = null"><img src="../public/assets/images/icon_fermer.png" class="logoFermer"></div>
                 <h3>FORMULAIRE DE MODIFICATION D'UNE ANNONCE</h3>
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
@@ -51,7 +51,7 @@
             <option value="evenement">Evenement</option>
             <option value="autre">Autre</option>
         </select>
-        <button type="submit">MODIFIER CETTE ANNONCE (id=@{{ annonceUpdate.id }})</button>
+        <button type="submit">MODIFIER</button>
         <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
         <input type="hidden" name="id"  v-model="annonceUpdate.id">
         <div class="confirmation">
@@ -84,11 +84,8 @@
         </main>
         </div><!-- FIN DU CONTAINER POUR VUEJS -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="<?php echo url('/assets/js/main.js') ?>"></script>
 
-</body>
-</html>
-   <!--  <script>
+        <script>
 // ON PEUT ENSUITE COMMENCER A UTILISER VUEJS
 var app = new Vue({
   el: '#app',
@@ -177,4 +174,3 @@ var app = new Vue({
     </script>
 </body>
 </html>
- -->

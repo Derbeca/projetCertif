@@ -18,7 +18,7 @@
 <transition name="fade">
     <nav id="mySidebar" v-show="menuGenerale">
         <div @click="menuGenerale = false">
-            <img src="../public/assets/images/icon_fermer.png" id="logoFermer">
+            <img src="../public/assets/images/icon_fermer.png" class="logoFermer">
         </div>
 
         <div id="menuAccueil">
