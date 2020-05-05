@@ -49,6 +49,7 @@ foreach($tabAnnonce as $annonce)
     <h4>{$annonce->titre}</h4>
     <p>{$annonce->categorie}</p>
     <p>{$annonce->adresse}</p>
+    <p>Auteur: {$annonce->user->name}</p>
 </article>
 CODEHTML;
 }

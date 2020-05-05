@@ -168,7 +168,9 @@ var app = new Vue({
     annonceUpdate: null,  
     annonces: [],
     confirmation: '',  
-    message: 'Hello Vue !'
+    message: 'Hello Vue !',
+    menuGenerale: false,
+    menuLogin: false
   }
 });
     </script>
