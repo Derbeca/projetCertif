@@ -59,6 +59,8 @@ Route::any('/annonce/store', 'AnnonceController@store');
 Route::any('/annonce/supprimer', 'AnnonceController@supprimer');
 // UPDATE
 Route::any('/annonce/modifier', 'AnnonceController@modifier');
+// POSITIONNER
+Route::any('/position/store', 'PositionController@store');
 Auth::routes();
 // CETTE LIGNE DE CODE CREE PLUSIEURS URLS DE ROUTE
 // /register                => INSCRIPTION D'UN NOUVEL UTILISATEUR

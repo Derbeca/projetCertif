@@ -34,7 +34,7 @@ class CreateAnnoncesTable
             */
             $table->string('titre');		
             $table->string('photo');	
-            $table->string('adresse');
+
             $table->string('categorie');
             	
 

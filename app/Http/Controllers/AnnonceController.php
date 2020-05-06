@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 // NE PAS OUBLIER DE RAJOUTER CETTE LIGNE POUR UTILISATION Auth
 use Illuminate\Support\Facades\Auth;
+use DB;
 class AnnonceController extends Controller
 {
     public function rechercher (Request $request)
@@ -154,8 +155,7 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        // READ LISTE
-        // JE VEUX OBTENIR LA LISTE DES ANNONCES
+
     }
     /**
      * Show the form for creating a new resource.
@@ -265,7 +265,6 @@ class AnnonceController extends Controller
                 'id'        => 'required|numeric|min:1',
                 'titre'     => 'required|max:160',
                 'photo'     => 'image',         // OPTIONNEL
-                'adresse'   => 'required|max:160',
                 'categorie' => 'required',
             ]);
             if ($validator->fails()) 
@@ -284,7 +283,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "adresse", "categorie"
+                    "titre", "categorie"
                 ]);
                 // JE DOIS TRAITER L'UPLOAD A PART
                 // https://laravel.com/docs/5.8/filesystem#file-uploads
@@ -348,6 +347,7 @@ class AnnonceController extends Controller
         // NOTE: CE SERA LARAVEL QUI VA TRANSFORMER 
         // LE TABLEAU ASSOCIATIF EN JSON
     }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -382,7 +382,6 @@ class AnnonceController extends Controller
             $validator = Validator::make($request->all(), [
                 'titre'     => 'required|max:160',
                 'photo'     => 'required|image', // SECURITE: PAS DE FICHIER PHP
-                'adresse'   => 'required|max:160',
                 'categorie' => 'required',
             ]);
             if ($validator->fails()) 
@@ -401,7 +400,7 @@ class AnnonceController extends Controller
                 // IL FAUT AJOUTER DU CODE DANS
                 // app/Annonce.php
                 $tabInput = $request->only([
-                    "titre", "adresse", "categorie"
+                    "titre", "categorie"
                 ]);
                 
                 // JE DOIS TRAITER L'UPLOAD A PART
