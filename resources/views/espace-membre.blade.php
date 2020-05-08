@@ -66,9 +66,11 @@
         <p>Tu peux entrez une adresse</p>
 
         <p>ou géolocaliser ta position</p>
-        <button id="geo">GÉOCALISER</button>
-        <input type="text" name="lat">
-        <input type="text" name="long">
+        <button @click="myFunction()">GÉOCALISER</button>
+
+        
+        <input type="text" name="lat" id="lat" v-model="lat">
+        <input type="text" name="long" id="long" v-model="long">
         <button type="submit">PLACER</button>
         <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
         <input type="hidden" name="id"  v-model="annonceLocation.id">
@@ -132,6 +134,19 @@ var app = new Vue({
         // JE MEMORISE L'ANNONCE A MODIFIER DANS UNE VARIABLE VUEJS
         this.annonceLocation = annonce;
       },
+
+      myFunction: function () {		
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(this.showPosition);
+        }else{
+            this.erreur = "Geolocation is not supported."; 
+	    }
+      },
+	  showPosition:function (position) {	
+		this.lat = position.coords.latitude;
+		this.long = position.coords.longitude;
+	  },
+    
       supprimerAnnonce: function (annonce) {
         // debug
         console.log(annonce);
@@ -201,7 +216,10 @@ var app = new Vue({
     confirmation: '',  
     message: 'Hello Vue !',
     menuGenerale: false,
-    menuLogin: false
+    menuLogin: false,
+    error: '',
+	lat:'',
+	lon:''
   }
 });
     </script>

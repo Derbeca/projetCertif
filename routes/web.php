@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
 });
+
 
 
 // JE VAIS AJOUTER LES PAGES DE MON SITE
@@ -27,6 +28,7 @@ Route::view('/contact', 'contact');
 //      resources/views/contact.blade.php
 Route::view('/galerie', 'galerie');
 Route::view('/carte', 'carte');
+Route::any('/carte', 'PositionController@index');
 // SI JE VEUX CHANGER LA PAGE D'ACCUEIL
 Route::view('/', 'accueil');
 // JE VAIS RAJOUTER LES PAGES espace-membre ET espace-admin

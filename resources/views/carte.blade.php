@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
 <style type="text/css">
 html, body { width:100%;padding:0;margin:0; }
 .container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
@@ -16,7 +17,7 @@ html, body { width:100%;padding:0;margin:0; }
 <body>
 <div class="container">
 
-    <b>Coordinates</b>
+<!--     <b>Coordinates</b>
     <form>
     <input type="text" name="lat" id="lat" size=12 value="">
     <input type="text" name="lon" id="lon" size=12 value="">
@@ -27,30 +28,39 @@ html, body { width:100%;padding:0;margin:0; }
         <button type="button" onclick="addr_search();">Search</button>
         <div id="results"></div>
     </div>
-    </br>
+    </br> -->
+
     <div id="map"></div>
 </div>
 
 <script type="text/javascript">
 
 // Marseille
-var startlat = 43.29617430;
-var startlon = 5.36995250;
+/* var startlat = 43.29617430;
+var startlon = 5.36995250; */
 
-var options = {
+var villes = @json($positions);
+
+/* var options = {
  center: [startlat, startlon],
  zoom: 9
 };
 
 document.getElementById('lat').value = startlat;
-document.getElementById('lon').value = startlon;
+document.getElementById('lon').value = startlon; */
 
-var map = L.map('map', options);
+
+
+var map = L.map('map').setView([43.29617430, 5.36995250], 8);
 var nzoom = 12;
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: 'OSM'}).addTo(map);
+for (var i = 0; i < villes.length; i++) {
+			marker = new L.marker([villes[i][0], villes[i][1]])
+.addTo(map);
+		}
 
-var myMarker = L.marker([startlat, startlon], {title: "Coordinates", alt: "Coordinates", draggable: true}).addTo(map).on('dragend', function() {
+/* var myMarker = L.marker([startlat, startlon], {title: "Coordinates", alt: "Coordinates", draggable: true}).addTo(map).on('dragend', function() {
  var lat = myMarker.getLatLng().lat.toFixed(8);
  var lon = myMarker.getLatLng().lng.toFixed(8);
  var czoom = map.getZoom();
@@ -109,7 +119,7 @@ function addr_search()
  };
  xmlhttp.open("GET", url, true);
  xmlhttp.send();
-}
+} */
 
 </script>
 </body>

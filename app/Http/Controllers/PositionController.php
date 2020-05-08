@@ -16,12 +16,16 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $position=DB::table('positions')
+/*         $position=DB::table('positions')
         ->join('positions', 'positions.annonce_id', '=', 'annonces.id')
         ->select('positions.lat', 'positions.long', 'annonces.photo')
         ->get();
 
-        dd($position);
+        dd($position); */
+
+        $positions = Position::all();
+        $positions = json_encode($positions);
+        return view('carte', compact('positions'));
     }
 
     /**
@@ -54,6 +58,7 @@ class PositionController extends Controller
             $validator = Validator::make($request->all(), [
                 'lat'       => 'required',
                 'long'      => 'required',
+                'annonce_id'=> 'unique:positions',
             ]);
             if ($validator->fails()) 
             {
@@ -86,7 +91,9 @@ class PositionController extends Controller
             // ON PEUT RENVOYER LE TABLEAU ASSOCIATIF
             // ET LARAVEL VA LE TRANSFORMER EN JSON => COOL
             return $tabAssoJson;
+
     }
+
 
     /**
      * Display the specified resource.
