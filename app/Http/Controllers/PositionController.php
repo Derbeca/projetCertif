@@ -24,7 +24,8 @@ class PositionController extends Controller
         dd($position); */
 
         $positions = Position::all();
-        $positions = json_encode($positions);
+
+        $positions = json_encode($positions, JSON_PRETTY_PRINT);
         return view('carte', compact('positions'));
     }
 
