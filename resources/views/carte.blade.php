@@ -55,14 +55,13 @@ document.getElementById('lon').value = startlon; */
 
 var map = L.map('map').setView([43.29617430, 5.36995250], 13);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(map);
+L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVyYmVjYSIsImEiOiJjazl6c2pvZzcwMmhmM2l0NnkyODhpc3NzIn0.rueU4bSnS3Or5OsW8EtYCg', {
+   maxZoom: 18,
+   attribution: 'Map data &copy; <a href="http://openstreetmap.org/"> OpenStreetMap </a> contributors, ' +
+    '<a href="http://creativecommons.org/"> CC-BY-SA </a>, ' +
+    'Imagery � <a href="http://mapbox.com">Mapbox</a>',
+   id: 'examples.map-i875mjb7'
+  }).addTo(map);
   
   $( document ).ready(function() {
    addMarkeurs();     
