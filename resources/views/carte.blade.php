@@ -1,7 +1,8 @@
 <html>
 <head>
-<title>Leaflet Address Lookup and Coordinates</title>
+<title>Martseille</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="<?php echo url('/assets/css/style.css') ?>">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
@@ -11,16 +12,66 @@
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
 
 
-<style type="text/css">
-html, body { width:100%;padding:0;margin:0; }
-.container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
-#lat, #lon { text-align:right }
-#map { width:100%;height:80%;padding:0;margin:0; }
-.address { cursor:pointer }
-.address:hover { color:#AA0000;text-decoration:underline }
-</style>
+
 </head>
 <body>
+<div id="app">
+<!-- MENU DEPLIANT CACHÉ-->
+<transition name="fade">
+    <nav id="mySidebar" v-show="menuGenerale">
+        <div @click="menuGenerale = false">
+            <img src="../public/assets/images/icon_fermer.png" class="logoFermer">
+        </div>
+
+        <div id="menuAccueil">
+            <a href="<?php echo url('/') ?>"><img src="../public/assets/images/icon_home.png"><p>accueil</p></a>
+            <a href="<?php echo url('/annonces') ?>"><img src="../public/assets/images/icon_galerie.png"><p>galerie</p></a>
+            <a href="<?php echo url('/recherche') ?>"><img src="../public/assets/images/icon_recherche.png"><p>chercher</p></a>
+            <a href="<?php echo url('/carte') ?>"><img src="../public/assets/images/icon_carte.png"><p>carte</p></a>
+            <!-- <a href="<?php echo url('/register') ?>">inscription</a> -->
+<!--             <a href="<?php echo url('/espace-membre') ?>">espace membre</a> -->
+            <a href="<?php echo url('/galerie') ?>"><img src="../public/assets/images/icon_murs.png"><p>chasse au murs</p></a>
+            <a href="<?php echo url('/contact') ?>"><img src="../public/assets/images/icon_contact.png"><p>contact</p></a>
+        </div>
+    </nav>
+</transition>
+
+    <!-- HEADER -->
+    <header >
+        <span id="justify">
+            <a href="<?php echo url('/') ?>" id="logo">
+                <img src="../public/assets/images/logo_martseille.png">
+            </a>
+            <div id="login">
+                <div  @click="menuLogin = !menuLogin">
+                    <img src="../public/assets/images/icon_login.png" id="logoLogin">
+                </div>
+                <transition name="fade">
+                <ul id="menu" v-show="menuLogin">
+                    <li><a href="<?php echo url('/register') ?>">Inscription</a></li>
+                    <li><a href="<?php echo url('/login') ?>">Connexion</a></li>
+                    <li>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Déconnexion') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    <li><a href="<?php echo url('/espace-membre') ?>">Mon espace</a></li>
+                </ul>
+                </transition>
+                <div @click="menuGenerale = !menuGenerale">
+                    <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                </div>
+            </div>
+        </span> 
+    </header>
 <div class="container">
 
 <!--     <b>Coordinates</b>
@@ -38,6 +89,16 @@ html, body { width:100%;padding:0;margin:0; }
 
     <div id="map"></div>
 </div>
+<a href="<?php echo url('/espace-membre') ?>" id="btn-plus">+ PUBLIER PHOTO</a>
+    <footer>
+        <a href="<?php echo url('/recherche') ?>" id="logoRecherche"><img src="../public/assets/images/icon_rechercheNoir.png"></a>
+        
+        <a href="<?php echo url('/espace-membre') ?>" id="logoCarte"><img src="../public/assets/images/icon_carteNoir.png"></a>
+    </footer>
+    </div><!-- FIN DU CONTAINER POUR VUEJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="<?php echo url('/assets/js/main.js') ?>"></script>
 
 <script type="text/javascript">
 
