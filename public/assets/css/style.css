@@ -424,15 +424,22 @@ html, body {
 .leaflet-control-attribution a {
 	font-size: 10px;
 }
+.leaflet-popup-content {
+    width: 200px;
+    height: auto;
+    margin: 5px;
+}
+.leaflet-popup-content img {
+    width: 100%;
+}
 #lat, #lon { 
     text-align:right; 
 }
 #map { 
     width:100%;
-    height:50%;
+    height:100%;
     padding:0;
     margin:0;
-    z-index: -99;
 }
 .address { 
     cursor:pointer; 

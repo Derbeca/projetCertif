@@ -155,7 +155,10 @@ class AnnonceController extends Controller
      */
     public function index()
     {
+        $posAnnonces = Annonce::all('photo');
 
+        $posAnnonces = json_encode($posAnnonces, JSON_PRETTY_PRINT);
+        return view('carte', compact('posAnnonces'));
     }
     /**
      * Show the form for creating a new resource.

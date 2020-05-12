@@ -28,7 +28,8 @@ Route::view('/contact', 'contact');
 //      resources/views/contact.blade.php
 Route::view('/galerie', 'galerie');
 Route::view('/carte', 'carte');
-Route::any('/carte', 'PositionController@index');
+
+
 // SI JE VEUX CHANGER LA PAGE D'ACCUEIL
 Route::view('/', 'accueil');
 // JE VAIS RAJOUTER LES PAGES espace-membre ET espace-admin
@@ -48,7 +49,6 @@ Route::any('/deconnexion', 'AnnonceController@deconnexion');
 // ON ASSOCIE L'URL /newsletters/store
 // A LA CLASSE NewsletterController 
 // ET AVEC LA METHODE store 
-Route::any('/newsletters/store', 'NewsletterController@store');
 Route::any('/contact/store', 'ContactController@store');
 // POUR CREER LA ROUTE QUI VA GERER LE CRUS SUR LES ANNONCES
 // CREATE
@@ -63,6 +63,7 @@ Route::any('/annonce/supprimer', 'AnnonceController@supprimer');
 Route::any('/annonce/modifier', 'AnnonceController@modifier');
 // POSITIONNER
 Route::any('/position/store', 'PositionController@store');
+
 Auth::routes();
 // CETTE LIGNE DE CODE CREE PLUSIEURS URLS DE ROUTE
 // /register                => INSCRIPTION D'UN NOUVEL UTILISATEUR

@@ -89,7 +89,6 @@
 
     <div id="map"></div>
 </div>
-<a href="<?php echo url('/espace-membre') ?>" id="btn-plus">+ PUBLIER PHOTO</a>
     <footer>
         <a href="<?php echo url('/recherche') ?>" id="logoRecherche"><img src="../public/assets/images/icon_rechercheNoir.png"></a>
         
@@ -99,20 +98,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="<?php echo url('/assets/js/main.js') ?>"></script>
+    <?php
+        use App\Annonce;
+        
+        $tabPosition = \App\Position
+                            ::with('annonce')
+                            ->latest("positions.updated_at")   // CONSTRUCTION DE LA REQUETE
+                            ->get();                 // JE VEUX OBTENIR LES RESULTATS
+        
+        // debug
+        // print_r($tabAnnonce)
+    
+    
+    ?>
 
 <script type="text/javascript">
-
-
-// Marseille
-/* var startlat = 43.29617430;
-var startlon = 5.36995250; */
-
-
-
-
-
-/* document.getElementById('lat').value = startlat;
-document.getElementById('lon').value = startlon; */
 
 var map = L.map('map').setView([43.29617430, 5.36995250], 13);
 
@@ -130,39 +130,18 @@ L.tileLayer( 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/
   
   function addMarkeurs() {
    for(var i=0; i<positions.length; i++) {
+
     var marker = L.marker( [positions[i]['lat'], positions[i]['long']]).addTo(map);
-    marker.bindPopup( "<b>" + positions[i]['id']+"</b><br>Details:" + positions[i]['annonce_id']);
+    marker.bindPopup('<img src="' +  positions[i].annonce.photo + '"/p>');
    }
-  }
-  
-  function stringToGeoPoints( geo ) {
-   var linesPin = geo.split(",");
+  };
 
-   var linesLat = new Array();
-   var linesLng = new Array();
+  var positions = @json($tabPosition);
 
-   for(i=0; i < linesPin.length; i++) {
-    if(i % 2) {
-     linesLat.push(linesPin[i]);
-    }else{
-     linesLng.push(linesPin[i]);
-    }
-   }
-
-   var latLngLine = new Array();
-
-   for(i=0; i<linesLng.length;i++) {
-    latLngLine.push( L.latLng( linesLat[i], linesLng[i]));
-   }
-   
-   return latLngLine;
-  }
-  
-  
-  
-  var positions = @json($positions);
-  positions = JSON.parse(positions);
   console.log(positions);
+
+
+
 
 
 /* var myMarker = L.marker([startlat, startlon], {title: "Coordinates", alt: "Coordinates", draggable: true}).addTo(map).on('dragend', function() {
