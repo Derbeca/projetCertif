@@ -44,11 +44,11 @@
     <header >
         <span id="justify">
             <a href="<?php echo url('/') ?>" id="logo">
-                <img src="../public/assets/images/logo_martseille.png">
+                <img src="../public/assets/images/logo_martseille.svg">
             </a>
             <div id="login">
                 <div  @click="menuLogin = !menuLogin">
-                    <img src="../public/assets/images/icon_login.png" id="logoLogin">
+                    <img src="../public/assets/images/icon_login.svg" id="logoLogin">
                 </div>
                 <transition name="fade">
                 <ul id="menu" v-show="menuLogin">
@@ -71,7 +71,7 @@
                 </ul>
                 </transition>
                 <div @click="menuGenerale = !menuGenerale">
-                    <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                    <img src="../public/assets/images/icon_burguer.svg" id="logoMenu">
                 </div>
             </div>
         </span> 

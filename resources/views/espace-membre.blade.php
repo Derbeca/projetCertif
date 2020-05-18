@@ -103,7 +103,7 @@
                 </div>
             </section>
         </main>
-        <a href="<?php echo url('/espace-membre') ?>" id="btn-plus">+ PUBLIER PHOTO</a>
+
         <footer>
             <a href="<?php echo url('/recherche') ?>" id="logoRecherche"><img src="../public/assets/images/icon_rechercheNoir.png"></a>
             <a href="<?php echo url('/espace-membre') ?>" id="logoCarte"><img src="../public/assets/images/icon_carteNoir.png"></a>

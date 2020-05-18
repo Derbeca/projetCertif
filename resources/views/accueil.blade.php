@@ -34,7 +34,7 @@
         <header id="headerAccueil">
         <div id="login">
                 <div  @click="menuLogin = !menuLogin">
-                    <img src="../public/assets/images/icon_login.png" id="logoLogin">
+                    <img src="../public/assets/images/icon_login.svg" id="logoLogin">
                 </div>
                 <transition name="fade">
                 <ul id="menu" v-show="menuLogin">
@@ -57,11 +57,11 @@
                 </ul>
                 </transition>
                 <div @click="menuGenerale = !menuGenerale">
-                    <img src="../public/assets/images/icon_hamburguer.png" id="logoMenu">
+                    <img src="../public/assets/images/icon_burguer.svg" id="logoMenu">
                 </div>
             </div>
             <div id="entete">
-                <a href="<?php echo url('/') ?>" id="logoAccueil"><img src="../public/assets/images/logo_martseille.png"></a>
+                <a href="<?php echo url('/') ?>" id="logoAccueil"><img src="../public/assets/images/logo_martseille.svg"></a>
             </div>
         </header>
         </div>
@@ -72,7 +72,6 @@
                 </p>
                 <p id="source">(Made in Marseille, 22/02/19)</p>
             </div>
-            <a href="<?php echo url('/espace-membre') ?>" id="btn-plus">+ PUBLIER PHOTO</a>
         </main>
 
         <footer id="footerAccueil">
