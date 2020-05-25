@@ -59,19 +59,17 @@
             </section>
             <section class="lightbox" v-if="annonceLocation">
                 <div @click="annonceLocation = null"><img src="../public/assets/images/icon_fermer.png" class="logoFermer"></div>
-                <h3>PLACER UNE PHOTO</h3>
+                <h3>POSITIONNER UNE PHOTO</h3>
     <!-- CONVENTION LARAVEL POUR LE CREATE action="annonce/store" -->
     <!-- https://fr.vuejs.org/v2/guide/forms.html -->
     <form @submit.prevent="envoyerFormAjax" method="POST" action="position/store">
-        <p>Tu peux entrez une adresse</p>
-
-        <p>ou géolocaliser ta position</p>
-        <button @click="myFunction()">GÉOCALISER</button>
+        <p id="message">Si vous autorisez martseille.com à utiliser vos données de localisation, appuyez sur le bouton géolocaliser et ensuite sur le bouton positionner.</p>
+        <button @click="myFunction()" id="btn-geo">GÉOCALISER</button>
 
         
-        <input type="text" name="lat" id="lat" v-model="lat">
-        <input type="text" name="long" id="long" v-model="long">
-        <button type="submit">PLACER</button>
+        <input type="hidden" name="lat" id="lat" v-model="lat">
+        <input type="hidden" name="long" id="long" v-model="long">
+        <button type="submit">POSITIONNER</button>
         <!-- ON UTILISE id POUR SELECTIONNER LA BONNE LIGNE SQL -->
         <input type="hidden" name="id"  v-model="annonceLocation.id">
         <div class="confirmation">
