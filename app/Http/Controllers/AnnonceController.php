@@ -15,8 +15,7 @@ class AnnonceController extends Controller
         $tabAssoJson = [];
         // DEBUG
         $tabAssoJson["request"] = $request->all();
-        // https://laravel.com/docs/5.7/validation#available-validation-rules
-        // https://laravel.com/docs/5.7/validation#a-note-on-optional-fields
+
         $validator = Validator::make($request->all(), [
             'adresse'      => 'required|min:5|max:5',
             'categorie'    => 'nullable',   // OPTIONNEL

@@ -18,33 +18,15 @@ class CreateAnnoncesTable
     {
         Schema::create('annonces', function (Blueprint $table) {
             $table->bigIncrements('id');    // LAVAREL VA GERER LA COLONNE id
-            // AJOUTER LE CODE POUR CREER NOS COLONNES
-            // https://laravel.com/docs/6.x/migrations#creating-columns
-            /*
-            DEFINIR LA TABLE SQL annonces
-            id              BIGINT          INDEX=PRIMARY   A_I (LARAVEL LE FAIT POUR NOUS)
-            titre           VARCHAR(191)
-            dateEvenement   DATE
-            contenu         TEXT
-            photo           VARCHAR(191)
-            adresse         VARCHAR(191)
-            codePostal      VARCHAR(191)
-            categorie       VARCHAR(191)
-            prix            DECIMAL(10,2)
-            */
+
             $table->string('titre');		
             $table->string('photo');	
 
             $table->string('categorie');
-            	
 
-            // https://laravel.com/docs/5.0/schema#foreign-keys
-            // ON AJOUTE UNE COLONNE DE CLE ETRANGERE 
-            // POUR LA RELATION ONE TO MANY	
-            // AVEC LA TABLE SQL users
             $table->bigInteger('user_id')->unsigned();
-            // $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();       // LARAVEL VA AJOUTER 2 COLONNE created_at ET updated_at
+
+            $table->timestamps();
         });
     }
     /**
